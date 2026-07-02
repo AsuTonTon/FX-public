@@ -150,6 +150,11 @@ classes, local-only boundary, sample buckets, shortfall rules, hidden fields,
 Pass A / Pass B handling, Git-safe aggregate output format, and hard-stop
 conditions.
 
+A bounded Strategy B local-only diagnostic remains routine only when a prior
+issue explicitly authorizes the diagnostic question, source classes, fixed
+local-only root, artifact boundaries, Pass A / Pass B handling where applicable,
+Git-safe aggregate output shape, and hard-stop conditions.
+
 ## 8. Executive-decision triggers
 
 The following require executive decision before automation work proceeds:
@@ -161,7 +166,9 @@ The following require executive decision before automation work proceeds:
 - market-data API, broker API, live system, order placement, auto-trading, or
   live-trading work;
 - a broader source universe for fallback diagnostics;
-- local OHLC data or generated artifact access;
+- unauthorized local OHLC data or generated artifact access, access outside the
+  fixed local-only diagnostic boundary, or any local-only diagnostic run not
+  explicitly authorized by a prior bounded GitHub Issue;
 - merging rejection taxonomy categories into implementation behavior;
 - direct integration of YouTube channel-wide corpus findings into executable
   Strategy A/B behavior;

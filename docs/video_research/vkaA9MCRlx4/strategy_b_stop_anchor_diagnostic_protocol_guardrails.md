@@ -279,19 +279,19 @@ Confirmed:
 
 ## 11. Recommended next bounded docs-only task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor diagnostic sample design checklist`
+Do not proceed next to sample design, packet-field design, Pass A / Pass B
+review-run preparation, repeat checks, second-review setup, or hard-stop
+authorization for local execution. Next local-only diagnostic, packet, sample,
+Pass A / Pass B, worksheet, mapping, reveal-table, chart-packet, or review-run
+work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Scope:
-
-- docs-only;
-- define the future local-only sample design needed for the Pass A / Pass B
-  protocol;
-- define required packet fields, hidden fields, case IDs, repeat checks,
-  second-review triggers, and hard stops;
-- keep all rows, charts, mappings, worksheets, CSV/JSON outputs, and market
-  data local-only and out of Git;
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 - do not run diagnostics;
 - do not change Strategy B behavior;
 - keep the Issue #45 closure note controlling.

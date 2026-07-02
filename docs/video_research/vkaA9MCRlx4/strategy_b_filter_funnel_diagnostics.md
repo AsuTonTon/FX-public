@@ -124,9 +124,17 @@ These are review candidates, not implemented changes and not optimization result
 
 ## 10. Recommended Next Diagnostic Step
 
-Before changing Strategy B, add or run a diagnostics-only candidate export that records every confirmed candidate with ATR, ADX, selected TP1/TP2, risk, stop_distance/ATR, and all pass/fail flags. That would show whether TP1 RR and stop-distance are jointly failing on the same candidates. This is instrumentation, not a trading-rule change or parameter optimization.
+Updated routing after the public diagnostic boundary:
 
-Provisional judgment: Strategy B should continue only as a diagnostics project for now. The current fixed rule set is too restrictive for meaningful performance comparison on USDJPY/EURUSD because it accepts only one trade per pair. No profitability conclusion should be drawn.
+Do not add or run diagnostics-only exports as the next step. Next local-only
+diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table,
+chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
+
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 11. Verification Commands
 

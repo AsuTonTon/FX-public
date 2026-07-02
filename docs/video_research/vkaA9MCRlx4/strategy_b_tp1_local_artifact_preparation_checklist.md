@@ -351,20 +351,19 @@ artifact category is missing.
 
 ## 15. Recommended next step
 
-Recommended next step: make the required local-only inputs available under
-ignored local paths, then rerun the manual review execution task.
+Updated routing after the public diagnostic boundary:
 
-If artifacts are still missing, keep the blocker state and do not fabricate
-rows, fetch data, call APIs, or create reviewer packets.
+Do not proceed next to making local-only inputs available for rerun, manual
+review execution, packet creation, worksheet filling, or aggregate diagnostic
+reporting. Next local-only diagnostic, packet, sample, Pass A / Pass B,
+worksheet, mapping, reveal-table, chart-packet, or review-run work remains
+paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-If artifacts are present, complete the review locally and create only a
-Git-safe aggregate report afterward. That future report may summarize counts,
-cross-tabs, ambiguity categories, second-review counts, correction counts, and
-non-raw interpretations. It must not commit raw candidate rows, TP candidate
-rows, market data, chart images, hidden mappings, filled worksheets, generated
-CSV/JSON, backtests, profitability claims, or Strategy B behavior changes.
-
-Do not recommend Strategy B behavior changes yet.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 16. Guardrails
 

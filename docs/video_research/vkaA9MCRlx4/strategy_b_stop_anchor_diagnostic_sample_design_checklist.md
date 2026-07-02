@@ -396,18 +396,16 @@ Confirmed:
 
 ## 14. Recommended next bounded docs-only task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor diagnostic run authorization review`
+Do not proceed next to local-only diagnostic run authorization review, source
+artifact selection, sample buckets, packet fields, hidden fields, repeat checks,
+second-review triggers, Pass B reveal fields, or review-run hard stops. Next
+local-only diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Scope:
-
-- docs-only;
-- decide whether a future local-only diagnostic run is warranted;
-- if warranted, specify the exact local-only source artifacts, sample buckets,
-  packet fields, hidden fields, repeat checks, second-review triggers, Pass B
-  reveal fields, hard stops, and Git-safe aggregate output;
-- do not run the diagnostic;
-- do not create local artifacts in Git;
-- do not change Strategy B behavior;
-- keep the current Strategy B closure note controlling.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

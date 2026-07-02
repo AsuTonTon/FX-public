@@ -127,12 +127,15 @@ The implementation is covered by tests for:
 
 ## 8. Next Diagnostic Use
 
-The next analysis can compare:
+Updated routing after the public diagnostic boundary:
 
-- Rank 1 target R versus rank 2 to rank 5 target R.
-- Rank 1 prominence versus later target prominence.
-- Whether rejected candidates mainly fail because rank 1 is too close while
-  later ranks have acceptable R.
-- Whether later ranks are still too close or structurally weak.
+Do not use this instrumentation as the next step for local candidate
+comparison, rank review, or review-run preparation. Next local-only diagnostic,
+packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table, chart-packet,
+or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-No Strategy B rule should be changed from this instrumentation alone.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

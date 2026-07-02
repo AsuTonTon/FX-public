@@ -229,14 +229,19 @@ The review also depends on chart rendering choices and a single reviewer. Any pr
 
 ## Recommended next PR
 
-The next PR should be a second-review or adjudication report for the seven flagged cases, not a Strategy B rule change. After that, a Strategy B TP1 design note can compare:
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-- keeping rank-1 TP1 as-is
-- allowing a farther structural target only under a tightly specified rule
-- separating low-R-but-structural TP from minor near-entry TP
-- preserving no-valid-target rejection where no left-side structure is visible
+Do not use this aggregate report to start second-review, adjudication,
+design-review, packet, worksheet, mapping, reveal-table, chart-packet, or
+review-run work. Next local-only diagnostic, packet, sample, Pass A / Pass B,
+worksheet, mapping, reveal-table, chart-packet, or review-run work remains
+paused under the public boundary until explicit human approval is given after
+corpus input, visual evidence review, and doctrine synthesis dependencies are
+addressed.
 
-No implementation or parameter change is recommended from this aggregate alone.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## Guardrail confirmations
 

@@ -249,19 +249,15 @@ Confirmed:
 
 ## 11. Recommended next bounded task
 
-Recommended next task:
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-`[codex] Strategy B diagnostic authorization issue skeleton for low-R structural TP review`
+Do not use this template to draft or authorize another local-only diagnostic
+issue, packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table,
+chart-packet, or review-run task. Next local-only diagnostic work remains
+paused under the public boundary until explicit human approval is given after
+corpus input, visual evidence review, and doctrine synthesis dependencies are
+addressed.
 
-Suggested scope:
-
-- docs-only;
-- use this template and committed Strategy B guardrail docs only;
-- draft an issue skeleton that could later authorize, but not run, a bounded
-  low-R-but-structural TP diagnostic;
-- keep source classes, Pass A / Pass B handling, Git-safe output, and hard-stop
-  conditions explicit;
-- do not run diagnostics;
-- do not access local data or generated artifacts;
-- do not change Strategy B behavior, code, parameters, configs, tests, runner
-  behavior, or backtest behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

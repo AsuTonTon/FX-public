@@ -68,7 +68,7 @@ Backlog principles:
 | B-TP1-FU-07 | Stop-width versus stop-validity distinction | When is a wide stop structurally valid versus simply too wide? | Stop-anchor labels; hidden stop-distance ATR revealed only after Pass A; corpus invalidation notes. | Docs-only distinction matrix: wide-but-structural, wide-and-questionable, not interpretable. | No | High | Stop-distance reveal after structural label lock. | Stop if width alone is treated as invalidity or if shallow stops are accepted only to improve RR. |
 | B-TP1-FU-08 | Contextual RR doctrine mapping | What would a non-optimized, mechanically testable contextual RR rule need to specify? | 32-summary doctrine map; manual RR labels; stop/TP structure labels. | Docs-only requirements checklist for any future contextual RR design. | No | Medium | Clear separation of structural TP, stop validity, and RR acceptability. | Stop if the proposed rule becomes a parameter sweep or uses performance to choose thresholds. |
 | B-TP1-FU-09 | Corpus-to-rule translation blockers | Which 32-summary concepts remain too discretionary for code? | `channel_32_summary_interim_synthesis.md`; TP1/stop manual review labels; ambiguity counts. | Blocker register listing discretionary terms that are not implementation-ready. | No | Medium | Corpus concepts mapped to current Strategy B decision points. | Stop if the backlog starts converting vague terms like clean wave or target realism directly into code. |
-| B-TP1-FU-10 | Future manual-review sample design | What fixed sample design would be needed before a design proposal? | Existing diagnostic design; prior manual-review sample results; local-only artifact policy. | Docs-only fixed sample protocol with buckets, hidden fields, second-review policy, and shortfall rules. | No | Medium | Agreement on whether to continue Strategy B diagnostics now. | Stop if sample selection uses outcomes, profitability, cherry-picking, or raw artifacts in Git. |
+| B-TP1-FU-10 | Future manual-review sample design | What fixed sample design would be needed before a design proposal? | Existing diagnostic design; prior manual-review sample results; local-only artifact policy. | Docs-only fixed sample protocol with buckets, hidden fields, second-review policy, and shortfall rules. | No | Medium | Public-boundary approval before any local-only diagnostic planning resumes. | Stop if sample selection uses outcomes, profitability, cherry-picking, or raw artifacts in Git. |
 
 ## 5. Evidence thresholds
 
@@ -124,14 +124,18 @@ Git-safe outputs may include only aggregate Markdown reports, diagnostic taxonom
 
 ## 8. Recommended next PR
 
-Recommended next PR: create a docs-only Strategy B TP1 decision closure note that freezes Strategy B behavior pending broader evidence.
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-Alternative next PRs:
+Do not use this backlog to continue Strategy B diagnostics, create a future
+diagnostic protocol, or start packet, sample, Pass A / Pass B, worksheet,
+mapping, reveal-table, chart-packet, or review-run work. Next local-only
+diagnostic work remains paused under the public boundary until explicit human
+approval is given after corpus input, visual evidence review, and doctrine
+synthesis dependencies are addressed.
 
-- pause Strategy B TP1 changes and return to the YouTube full-corpus doctrine analysis after the parallel line completes
-- create a fixed future diagnostic protocol if the user wants to continue Strategy B diagnostics now
-
-Do not recommend implementation. Any implementation would first require a separate docs-only design proposal that satisfies the evidence thresholds above.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 9. Guardrails
 

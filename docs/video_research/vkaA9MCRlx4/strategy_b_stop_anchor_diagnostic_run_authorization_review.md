@@ -297,18 +297,14 @@ Confirmed for this report:
 
 ## 12. Recommended next bounded task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor diagnostic local-only run`
+Do not proceed next to a local-only blinded stop-anchor diagnostic run. Next
+local-only diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Required scope:
-
-- authorize exactly one local-only blinded stop-anchor diagnostic run using the
-  boundary specification in this report;
-- keep all row-level, visual, worksheet, mapping, CSV/JSON, `data/`, and
-  `results/` artifacts out of Git;
-- commit only one Git-safe aggregate Markdown report;
-- do not change Strategy B behavior;
-- do not authorize implementation, optimization, Strategy B2, Strategy C,
-  market-data access beyond explicitly allowed local artifacts, broker/live
-  access, or profitability claims.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

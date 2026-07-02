@@ -6,7 +6,7 @@ Task: `channel_playlist_led_intermediate_batch_03_continuation_plan`
 
 This docs-only continuation plan defines the next conservative handling for the remaining playlist-led Intermediate Batch 03 window after the completed first slice in:
 
-`FX荳ｭ邏夊・・縺溘ａ縺ｮ蜍晉紫UP隰帛ｺｧ`
+`FX中級者のための勝率UP講座`
 
 This plan uses committed repository docs only. It does not perform new source access, does not resolve new playlist metadata, and does not identify exact later Batch 03 video IDs or compact titles unless they are already present in committed docs.
 

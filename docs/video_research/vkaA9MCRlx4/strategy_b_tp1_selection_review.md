@@ -255,24 +255,19 @@ integration, optimization, or new backtests.
 
 ## 9. Recommended next research step
 
-Recommended next step: create a small docs-only TP1 diagnostic design update
-that connects the existing manual chart review protocol to the 32-summary
-corpus synthesis.
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-The next research step should define how to classify rejected candidates into
-evidence buckets such as:
+Do not use this review to start diagnostic design, rejected-candidate
+classification, packet, worksheet, mapping, reveal-table, chart-packet, or
+review-run work. Next local-only diagnostic, packet, sample, Pass A / Pass B,
+worksheet, mapping, reveal-table, chart-packet, or review-run work remains
+paused under the public boundary until explicit human approval is given after
+corpus input, visual evidence review, and doctrine synthesis dependencies are
+addressed.
 
-- nearest swing is a minor local swing, not a meaningful target;
-- rank 1 is a valid first target but fixed RR rejects it;
-- later rank is a clearer structural target;
-- no rank 1-5 target is structurally valid;
-- stop anchor is structurally valid but creates low RR;
-- stop anchor is under-specified or mechanically questionable;
-- TP1 is being confused with protective management rather than a first target.
-
-That step should remain outcome-blinded and read-only. It should not change the
-Strategy B parameters or select a replacement TP1 rule until the chart-review
-labels show a repeatable structural distinction.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 10. Guardrails
 

@@ -326,13 +326,18 @@ This design will not authorize Strategy A/B code or config changes.
 
 ## 10. Recommended next step
 
-Recommended next PR: create a manual review worksheet template or docs-only
-protocol update that instantiates this label set and schema, then perform a
-small outcome-blinded manual review in a later PR or local review task.
+Updated routing after the public diagnostic boundary:
 
-The next PR should still avoid Strategy B behavior changes. It should prepare
-the review mechanism, not execute a new trading rule, backtest, optimization, or
-profitability comparison.
+Do not proceed next to worksheet preparation, packet preparation, sample
+selection, or outcome-blinded manual review. Next local-only diagnostic, packet,
+sample, Pass A / Pass B, worksheet, mapping, reveal-table, chart-packet, or
+review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
+
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 11. Guardrails
 

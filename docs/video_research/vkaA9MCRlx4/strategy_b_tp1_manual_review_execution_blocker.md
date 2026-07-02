@@ -89,20 +89,17 @@ and no aggregate findings could be produced.
 
 ## Recommended Next Step
 
-Make the required local-only artifacts available outside Git before retrying the
-manual review execution.
+Updated routing after the public diagnostic boundary:
 
-The next attempt should provide, in ignored local paths only:
+Do not retry manual review execution as the next step. Next local-only
+diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table,
+chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-- candidate export or TP-candidate diagnostic source;
-- fields needed for the approved sampling buckets;
-- chart-window preparation inputs or existing pre-confirmation chart context;
-- a local-only destination for hidden mappings;
-- a local-only destination for filled worksheets;
-- a local-only destination for reviewer-facing chart packets.
-
-After those artifacts are available locally, rerun the execution task and create
-only a Git-safe aggregate report with non-raw counts and interpretations.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## Guardrails
 

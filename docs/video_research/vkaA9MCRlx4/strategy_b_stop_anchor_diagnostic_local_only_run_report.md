@@ -232,16 +232,15 @@ Confirmed:
 
 ## 14. Recommended next bounded task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor diagnostic local-input availability handoff`
+Do not proceed next to local-input availability handoff or future-run
+preparation. Next local-only diagnostic, packet, sample, Pass A / Pass B,
+worksheet, mapping, reveal-table, chart-packet, or review-run work remains
+paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Scope:
-
-- docs-only unless explicitly handled outside this public repository;
-- confirm which local-only OHLC inputs or pre-existing local Strategy B
-  generated artifacts are available outside Git for a future run;
-- keep all raw and generated artifacts outside Git;
-- do not access market-data APIs or download data;
-- do not change Strategy B behavior;
-- if no approved local inputs are available, keep the diagnostic blocked.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

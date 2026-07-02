@@ -356,16 +356,17 @@ This plan does not authorize broker, API, or execution work.
 
 ## 13. Recommended next PR
 
-Recommended next step: execute the local-only manual review outside Git using
-this approved plan, then create a Git-safe aggregate manual review report PR.
+Updated routing after the public diagnostic boundary:
 
-That later report PR should summarize only non-raw aggregate findings, such as
-label counts, bucket counts, cross-tabs, ambiguity categories, second-review
-counts, and correction counts. It should not include raw candidate rows, chart
-images, hidden mappings, filled worksheets, market data, generated CSV/JSON,
-backtests, profitability claims, or Strategy B behavior changes.
+Do not execute the local-only manual review as the next step. Next local-only
+diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table,
+chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Do not recommend Strategy B behavior changes yet.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 14. Guardrails
 

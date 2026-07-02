@@ -244,22 +244,18 @@ Reasoning:
 
 ## 11. Recommended Next Step
 
-The safest next research step is a docs-only manual chart review protocol that
-compares rank 1 versus later ranks without changing Strategy B.
+Updated routing after the public diagnostic boundary:
 
-Suggested protocol:
+Do not proceed next to manual chart review, candidate sampling, or Strategy B2
+design-note preparation from this diagnostic analysis. Next local-only
+diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping, reveal-table,
+chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-1. Sample candidates by fixed buckets, not outcome:
-   `rank1 < 0.25R`, `0.25R <= rank1 < 0.5R`, `0.5R <= rank1 < 1.0R`, and
-   accepted candidates.
-2. For each sampled candidate, inspect rank 1 through rank 5 target locations
-   on the chart.
-3. Mark whether a human video-like interpretation would likely choose rank 1,
-   a later rank, no target, or no trade.
-4. Record reasons using a fixed vocabulary: minor swing, clear swing,
-   liquidity-like level, too close, too far, stop too wide, no clean structure.
-5. Only after that review, write a docs-only Strategy B2 design note. Do not
-   implement a new rule in this PR.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 12. Validation
 

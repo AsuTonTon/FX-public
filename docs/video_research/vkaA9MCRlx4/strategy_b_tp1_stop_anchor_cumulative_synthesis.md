@@ -164,20 +164,15 @@ Confirmed:
 
 ## 9. Recommended next bounded task after fallback availability reports
 
-Recommended next task after the fallback availability line reports:
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-`[codex] Strategy B fallback availability decision note`
+Do not use this synthesis to decide whether another fallback diagnostic,
+second review, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run should proceed. Next local-only
+diagnostic work remains paused under the public boundary until explicit human
+approval is given after corpus input, visual evidence review, and doctrine
+synthesis dependencies are addressed.
 
-Scope:
-
-- docs-only;
-- use the fallback sample-availability aggregate report as the controlling
-  source;
-- decide whether the fallback line should proceed to another blinded Pass A /
-  Pass B diagnostic, remain blocked for insufficient cases, or close as
-  underpowered;
-- require independent Pass A-only second review if another diagnostic is
-  proposed;
-- do not run diagnostics in the decision note;
-- do not change Strategy B behavior, code, parameters, configs, tests, runner
-  behavior, or backtest behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

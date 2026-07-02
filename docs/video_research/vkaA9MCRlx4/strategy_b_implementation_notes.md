@@ -149,16 +149,14 @@ The tests cover:
 
 ## Next Validation Step
 
-Before real-data Strategy B validation, keep the parameters fixed:
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-- ATR period: `14`
-- ATR buffer multiplier: `0.10`
-- swing width: `2`
-- swing lookback: `100`
-- TP1 minimum RR: `1.0`
-- TP2 minimum RR: `1.5`
-- partial close ratio: `50% / 50%`
-- ADX period: `14`
-- ADX no-trade threshold: `< 18`
+Do not use this note to start real-data validation or any local-only diagnostic
+run. Next local-only diagnostic, packet, sample, Pass A / Pass B, worksheet,
+mapping, reveal-table, chart-packet, or review-run work remains paused under
+the public boundary until explicit human approval is given after corpus input,
+visual evidence review, and doctrine synthesis dependencies are addressed.
 
-Real-data validation may proceed only as a read-only local CSV run after tests pass. It should compare Strategy B against Strategy A and must not be interpreted as proof of profitability or live-trading viability.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

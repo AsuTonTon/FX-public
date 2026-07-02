@@ -247,18 +247,16 @@ Confirmed:
 
 ## 12. Recommended next bounded task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B low-R structural TP diagnostic authorization packet readiness note`
+Do not proceed next to packet readiness, low-R structural TP diagnostic run
+preparation, sample selection, Pass A / Pass B setup, worksheet creation, or
+review-run automation. Next local-only diagnostic, packet, sample, Pass A /
+Pass B, worksheet, mapping, reveal-table, chart-packet, or review-run work
+remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Suggested scope:
-
-- docs-only;
-- use committed Strategy B authorization, evidence-gap, taxonomy, matrix,
-  checklist, and runbook docs only;
-- define what a future local-only packet readiness note would need to confirm
-  before any low-R-but-structural TP diagnostic run;
-- do not run diagnostics;
-- do not access local data or generated artifacts;
-- do not change Strategy B behavior, code, parameters, configs, tests, runner
-  behavior, or backtest behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

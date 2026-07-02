@@ -222,20 +222,15 @@ Confirmed:
 
 ## 11. Recommended next bounded task
 
-Recommended next task:
+Post-boundary routing: this section is superseded for task routing by
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
-`[codex] Strategy B diagnostic authorization template for stop-validity and taxonomy gaps`
+Do not use this ledger to start another diagnostic authorization template,
+case-level review, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run task. Next local-only diagnostic work
+remains paused under the public boundary until explicit human approval is given
+after corpus input, visual evidence review, and doctrine synthesis dependencies
+are addressed.
 
-Suggested scope:
-
-- docs-only;
-- use committed gate, contextual RR, taxonomy, triage, cumulative synthesis, and
-  stop-width versus stop-validity docs only;
-- define the fields a future local-only diagnostic authorization issue would
-  need before case-level stop-validity, no-valid-target, no-trade-structure, or
-  low-R-but-structural TP review;
-- keep the output as Markdown-only planning;
-- do not run diagnostics;
-- do not access local data or generated artifacts;
-- do not change Strategy B behavior, code, parameters, configs, tests, runner
-  behavior, or backtest behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

@@ -151,13 +151,16 @@ Evidence:
 
 ## 11. If Only One Rule Is Reviewed Next
 
-Review TP1 selection / TP1 minimum RR first. Do not change the parameter yet.
+Updated routing after the public diagnostic boundary:
 
-Recommended next diagnostic question:
+Next local-only diagnostic, packet, sample, Pass A / Pass B, worksheet,
+mapping, reveal-table, chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-- Is Strategy B selecting the video-intended left-side target, or is it mechanically choosing a nearest minor swing that is too close to entry to be useful?
-
-A safe next step is a docs-only or diagnostics-only review of candidate examples where TP1 R is below 0.25R, comparing the selected TP1 with the surrounding swing structure. That is still not a trading-rule change and not optimization.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 12. Non-action Decision
 

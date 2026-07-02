@@ -452,14 +452,19 @@ This dry run does not authorize Strategy A/B code or parameter changes.
 
 ## 10. Recommended next PR
 
-Recommended next PR: create a local-only manual review execution plan that
-specifies how future raw candidate exports, chart windows, reviewer-facing
-files, hidden mappings, and filled worksheets will remain local-only.
+Updated routing after the public diagnostic boundary:
 
-If the non-blocking usability observations above are considered important, a
-small worksheet template correction PR can come first. That correction should
-clarify label exclusivity and correction-record fields without changing
-Strategy B behavior.
+Do not proceed next to local-only manual review execution planning, raw
+candidate export handling, chart-window preparation, reviewer-facing files,
+hidden mappings, or filled worksheets. Next local-only diagnostic, packet,
+sample, Pass A / Pass B, worksheet, mapping, reveal-table, chart-packet, or
+review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
+
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 Do not recommend Strategy B behavior changes yet.
 

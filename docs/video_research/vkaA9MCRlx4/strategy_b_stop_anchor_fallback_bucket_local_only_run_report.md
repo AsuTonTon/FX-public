@@ -209,17 +209,15 @@ Confirmed:
 
 ## 13. Recommended next bounded task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor fallback bucket sample availability review`
+Do not proceed next to fallback sample availability review, broader local-only
+slice checks, Pass A / Pass B setup, or independent reviewer setup. Next
+local-only diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Suggested scope:
-
-- docs-only or local-only aggregate report;
-- determine whether more reference-candle fallback cases exist under a broader
-  but predeclared local-only slice;
-- keep all raw/generated artifacts outside Git;
-- preserve Pass A / Pass B separation;
-- add a genuinely independent Pass A-only second reviewer if future evidence
-  will be used beyond blocker documentation;
-- do not change Strategy B behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

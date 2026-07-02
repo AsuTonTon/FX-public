@@ -427,15 +427,19 @@ A label pattern cannot replace a separate, scoped Strategy B design decision.
 
 ## 10. Recommended next PR
 
-Recommended next PR: create a local-only manual review execution plan.
+Updated routing after the public diagnostic boundary:
 
-The next PR should specify how real candidate sampling, chart-window
-preparation, reviewer-facing materials, hidden mappings, and filled worksheets
-will remain local-only. It should not commit raw candidate rows, chart images,
-CSV/JSON, data/results files, or filled worksheet rows.
+Do not proceed next to local-only manual review execution planning, real
+candidate sampling, chart-window preparation, reviewer-facing materials, hidden
+mappings, or filled worksheets. Next local-only diagnostic, packet, sample, Pass
+A / Pass B, worksheet, mapping, reveal-table, chart-packet, or review-run work
+remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Do not recommend another placeholder/mock dry run unless a new blocking template
-issue is found.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.
 
 ## 11. Guardrails
 

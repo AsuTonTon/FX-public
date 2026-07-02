@@ -309,18 +309,15 @@ Confirmed:
 
 ## 14. Recommended next bounded task
 
-Recommended next task:
+Updated routing after the public diagnostic boundary:
 
-`[codex] Strategy B stop-anchor fallback bucket follow-up design`
+Do not proceed next to fallback bucket follow-up design, fallback-focused sample
+planning, independent Pass A-only second review, or review-run preparation.
+Next local-only diagnostic, packet, sample, Pass A / Pass B, worksheet, mapping,
+reveal-table, chart-packet, or review-run work remains paused under
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md` until
+explicit human approval is given after corpus input, visual evidence review, and
+doctrine synthesis dependencies are addressed.
 
-Scope:
-
-- docs-only;
-- use this run's aggregate shortfall as the reason to design a narrower
-  reference-candle fallback diagnostic;
-- predeclare a fallback-focused sample plan before any review;
-- keep all rows, charts, mappings, worksheets, and reveal tables local-only;
-- require an independent Pass A-only second reviewer if the next task intends
-  to use second-review evidence;
-- do not change Strategy B behavior, parameters, code, configs, tests, runner
-  behavior, or backtest behavior.
+Safe next tasks should remain docs-only and should prefer corpus coverage,
+evidence-registry, source-alignment, or boundary/status cleanup work.

@@ -6,7 +6,7 @@ Task: `channel_playlist_led_intermediate_batch_02_synthesis`
 
 This docs-only synthesis consolidates the seven audited playlist-led intermediate Batch 02 summaries from:
 
-`FX荳ｭ邏夊・・縺溘ａ縺ｮ蜍晉紫UP隰帛ｺｧ`
+`FX中級者のための勝率UP講座`
 
 This synthesis uses only committed paraphrased summaries, aggregate report, review, completed-summary audit files, and prior committed synthesis docs. It does not perform new source access and does not correct the underlying Batch 02 summaries in this PR.
 

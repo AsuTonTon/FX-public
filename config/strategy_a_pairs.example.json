@@ -1,0 +1,36 @@
+{
+  "pairs": {
+    "USDJPY": {
+      "tick_size": 0.001,
+      "assumed_spread": 0.015
+    },
+    "EURUSD": {
+      "tick_size": 0.00001,
+      "assumed_spread": 0.0001
+    },
+    "GBPUSD": {
+      "tick_size": 0.00001,
+      "assumed_spread": 0.00015
+    },
+    "AUDUSD": {
+      "tick_size": 0.00001,
+      "assumed_spread": 0.00012
+    },
+    "USDCAD": {
+      "tick_size": 0.00001,
+      "assumed_spread": 0.00015
+    },
+    "USDCHF": {
+      "tick_size": 0.00001,
+      "assumed_spread": 0.00015
+    },
+    "EURJPY": {
+      "tick_size": 0.001,
+      "assumed_spread": 0.02
+    },
+    "GBPJPY": {
+      "tick_size": 0.001,
+      "assumed_spread": 0.03
+    }
+  }
+}

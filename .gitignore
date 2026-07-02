@@ -1,0 +1,12 @@
+# Local market data and generated backtest outputs.
+data/
+results/
+
+# Local CSV exports and validation data.
+*_4h.csv
+*_4H.csv
+
+# Raw XM MT4/MT5 exports kept outside Git history.
+EURUSDH4.csv
+USDJPYH4.csv
+*H4.csv

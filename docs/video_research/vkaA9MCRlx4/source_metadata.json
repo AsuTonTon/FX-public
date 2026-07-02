@@ -1,0 +1,32 @@
+{
+  "video_id": "vkaA9MCRlx4",
+  "video_url": "https://www.youtube.com/watch?v=vkaA9MCRlx4",
+  "title": "【聖杯級】4時間足3波を確実に取るためのEMA戦略",
+  "channel_name": "ハイトレFX億トレーダーへの道",
+  "channel_id": "UCsyzKL2_be8U8ns5gfr1y5Q",
+  "length_seconds": "970",
+  "short_description": "動画内で使用してるXMはこちら〔メイン口座〕\n （今なら5万円相当の入金キャッシュバック付き）\n▶︎https://affx.click/cqrKg\n\nチャート分析ツール「Trading view」はこちら\n▶︎https://jp.tradingview.com/?offer_id=10&aff_id=24820&tiny_url=1\n\nツイッターはこちら\n▶︎https://twitter.com/haitore_fx\n\n（2023年5月31日にgemforexはサービスを停止しました。）\n\nーーーー【再生リスト】ーーーー\n完全初心者向けFX講座｜ゼロから月100万円稼ぐロードマップ\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh1OL0vrEmO7z_res2CGNZso\n\nFX中級者のための勝率UP講座　\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh0bxPacLi2w03CXmigUXIb6\n\n本物のトレーダーになるためのFX上級講座\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh0osYYSxKBv6iAk2UXRIrfi\n\nリアルトレード実況\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh0JVylG1c9CJTah3cjyh5KZ\n\n移動平均線の手法\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh13WViqxjN2uooq8i73NIbI\n\nGold &Silver攻略法\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh3DJjycqfHMsaeeBE_zrF1j\n\n視聴者月次報告\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh1gstQKACE8ICHmKgPmOfcD\n\n質問コーナー\n▶︎https://www.youtube.com/playlist?list=PLNGEKxuiLyh2kLp3BB_W7UNnH0hLhF7h8",
+  "caption_tracks": [
+    {
+      "name": "日本語 (自動生成)",
+      "languageCode": "ja",
+      "kind": "asr",
+      "vssId": "a.ja",
+      "isTranslatable": true
+    }
+  ],
+  "selected_caption_track": {
+    "name": "日本語 (自動生成)",
+    "languageCode": "ja",
+    "kind": "asr",
+    "vssId": "a.ja"
+  },
+  "retrieved_at_note": "取得時点のYouTube公開ページ情報。動画・音声ファイルは保存していない。",
+  "subtitle_retrieval": {
+    "method_primary": "yt-dlp via temporary Python tool directory, --skip-download, Japanese auto captions only",
+    "yt_dlp_note": "PATH上にyt-dlpは無かったため、一時フォルダに導入して字幕のみ取得。英語字幕はHTTP 429で取得不可、日本語自動字幕は取得成功。",
+    "downloaded_media": false,
+    "stored_subtitle_file": "vkaA9MCRlx4.ja.vtt",
+    "derived_srt_file": "raw_transcript.srt"
+  }
+}

@@ -1,0 +1,126 @@
+strategy_name: "4H EMA third-wave first-touch strategy"
+source_video:
+  title: "【聖杯級】4時間足3波を確実に取るためのEMA戦略"
+  channel: "ハイトレFX億トレーダーへの道"
+  url: "https://www.youtube.com/watch?v=vkaA9MCRlx4"
+  transcript_source: "YouTube Japanese auto-generated captions"
+  media_downloaded: false
+market:
+  stated_scope: "特定の商品・通貨ペアの指定なし。メジャーなものなら概ね機能すると説明。"
+  example_in_video: "USDJPY 4H"
+  unknowns:
+    - "正式な対象通貨ペア一覧"
+    - "ゴールド、シルバー、指数、暗号資産への適用可否"
+timeframe: "4H"
+indicators:
+  - name: "EMA"
+    parameters:
+      period: 20
+      source_price: "unknown; likely close but not explicitly stated"
+      role: "short-term trend / pullback touch line"
+  - name: "EMA"
+    parameters:
+      period: 200
+      source_price: "unknown; likely close but not explicitly stated"
+      role: "long-term trend / cross filter"
+long_setup:
+  conditions:
+    - "On 4H chart, EMA(20) crosses above EMA(200)."
+    - "Wait for the first candle after the golden cross that touches EMA(20)."
+    - "Touch may be by body or wick; candle color does not matter."
+    - "The first EMA(20)-touch candle becomes the reference candle."
+    - "Only the first EMA(20) touch after the cross is valid for this strategy."
+long_entry:
+  trigger: "A later candle closes with its real body above the reference candle high."
+  confirmation:
+    - "Wick-only breakout is insufficient."
+    - "Breakout must be confirmed by candle close/body."
+    - "If no body breakout occurs before an opposite cross or invalidation, no trade."
+long_stop_loss:
+  base_rule: "Below the nearest recent swing low /押し安値."
+  discretionary_adjustment: "Can be widened slightly when risk-reward remains favorable or the pullback is weak."
+  unknowns:
+    - "Exact swing-low definition"
+    - "Exact buffer size below swing low"
+    - "Quantitative rule for discretionary widening"
+long_take_profit:
+  base_rule: "Use prominent left-side swing highs as profit targets."
+  partial_exit: "Half exit at first prominent target, final exit at the next prominent target."
+  simple_variant: "If discretionary management is difficult, exit all at the nearest left-side target."
+  no_target_rule: "If no usable left-side target exists near the entry, skip the trade."
+  unknowns:
+    - "Exact swing-high detection rule"
+    - "Minimum required reward-to-risk"
+    - "Whether remaining position moves to breakeven after partial profit"
+short_setup:
+  conditions:
+    - "On 4H chart, EMA(20) crosses below EMA(200)."
+    - "Wait for the first candle after the dead cross that touches EMA(20)."
+    - "Touch may be by body or wick; candle color does not matter."
+    - "The first EMA(20)-touch candle becomes the reference candle."
+    - "Only the first EMA(20) touch after the cross is valid for this strategy."
+short_entry:
+  trigger: "A later candle closes with its real body below the reference candle low."
+  confirmation:
+    - "Wick-only breakout is insufficient."
+    - "Breakout must be confirmed by candle close/body."
+    - "Avoid or invalidate when bullish reversal structure such as a double bottom is present; exact definition unknown."
+short_stop_loss:
+  base_rule: "Above the nearest recent swing high /戻り高値."
+  discretionary_adjustment: "Can be widened slightly when risk-reward remains favorable."
+  unknowns:
+    - "Exact swing-high definition"
+    - "Exact buffer size above swing high"
+    - "Quantitative rule for discretionary widening"
+short_take_profit:
+  base_rule: "Use prominent left-side swing lows as profit targets."
+  partial_exit: "Half exit at first prominent target, final exit at the next prominent target."
+  simple_variant: "If discretionary management is difficult, exit all at the nearest left-side target."
+  no_target_rule: "If no usable left-side target exists near the entry, skip the trade."
+invalidation_rules:
+  - "No trade if the reference high/low is not broken by body close."
+  - "No trade if an opposite EMA cross occurs before valid entry."
+  - "Ignore second and later EMA(20) touches after the same EMA cross."
+  - "No trade if left-side profit target structure is absent."
+  - "No trade if reward-to-risk is poor; exact threshold is not specified."
+no_trade_conditions:
+  - "Range-bound or directionless market."
+  - "Low-volatility range where breakout direction is unclear."
+  - "No prominent left-side swing target."
+  - "Poor reward-to-risk."
+  - "Short setup into double-bottom-like structure; exact detection unknown."
+risk_management:
+  stated:
+    - "Check reward-to-risk before entering."
+    - "Partial take profit can be used: half at first target, remainder at second target."
+  unknown:
+    - "Account risk percentage per trade"
+    - "Lot sizing method"
+    - "Maximum concurrent positions"
+    - "Daily/weekly loss limit"
+    - "Rule after first partial profit: keep stop, discretionary exit, or breakeven"
+discretionary_elements:
+  - "Which swing low/high is the correct stop reference."
+  - "How much buffer to add to the stop."
+  - "Which left-side swing is prominent enough as a target."
+  - "Whether a market is ranging or trending."
+  - "Whether a double bottom/top invalidates a trade."
+  - "Whether to delay entry for better reward-to-risk after initial signal."
+unknowns:
+  - "Exact entry price: confirmation candle close vs next candle open."
+  - "EMA source price."
+  - "Minimum RR threshold."
+  - "Stop buffer in pips/ATR/spread multiples."
+  - "How to define and detect swing points."
+  - "How many bars after cross/touch the setup remains valid."
+  - "Whether re-entry is allowed after a missed/invalidated first touch."
+assumptions_for_backtest:
+  conservative_default:
+    - "Use 4H OHLC data."
+    - "EMA source price = close."
+    - "Enter at next bar open after confirmed body close breakout."
+    - "Stop at nearest fractal swing low/high plus spread/one tick buffer."
+    - "Require at least 1.0R to first target and 1.5R to final target, unless testing sensitivity."
+    - "First target = nearest prior swing in trade direction; final target = next prior swing."
+    - "If no target can be detected within visible lookback, skip."
+    - "Only one valid setup per EMA cross."

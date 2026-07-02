@@ -1,0 +1,122 @@
+name: FX repository guardrails
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  guardrails:
+    name: Forbidden artifact and PR-body guardrails
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          show-progress: false
+
+      - name: Public-readiness scan for full tracked tree
+        id: public_scan
+        shell: bash
+        run: |
+          set +e
+
+          python3 - <<'PY' > public_readiness_report.txt
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          files = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+          violations = []
+
+          forbidden_suffixes = (
+              ".csv", ".tsv", ".srt", ".vtt", ".ass", ".ssa",
+              ".mp3", ".mp4", ".m4a", ".wav", ".webm", ".mov",
+              ".zip", ".gz", ".parquet", ".sqlite", ".db", ".pkl",
+              ".pem", ".key", ".p12", ".pfx",
+          )
+
+          for path in files:
+              if path.startswith(("data/", "results/")):
+                  violations.append((path, "forbidden tracked generated/data path"))
+              if path.lower().endswith(forbidden_suffixes):
+                  violations.append((path, "forbidden tracked artifact or secret-like extension"))
+
+          patterns = [
+              ("classic GitHub token prefix", "gh" + "p_" + r"[A-Za-z0-9_]{20,}"),
+              ("fine-grained GitHub token prefix", "github" + "_pat_" + r"[A-Za-z0-9_]{20,}"),
+              ("AWS access key prefix", "AK" + "IA" + r"[0-9A-Z]{16}"),
+              ("private key header", "-" * 5 + r"BEGIN (RSA |DSA |EC |OPENSSH |PGP )?PRIVATE KEY" + "-" * 5),
+              ("Slack token prefix", "xo" + r"x[baprs]-[A-Za-z0-9-]+"),
+              ("OpenAI-style key prefix", "s" + "k-" + r"[A-Za-z0-9]{20,}"),
+              ("OpenAI env assignment", "OPENAI" + r"_API_KEY[\t ]*="),
+              ("GitHub token env assignment", "GITHUB" + r"_TOKEN[\t ]*="),
+              ("AWS secret env assignment", "AWS" + r"_SECRET_ACCESS_KEY[\t ]*="),
+              ("Windows local user path", r"C:\\Users\\"),
+              ("YouTube timedtext URL", "timed" + r"text\?"),
+          ]
+
+          excluded = {"AGENTS.md", ".github/workflows/fx-guardrails.yml"}
+          for path in files:
+              if path in excluded:
+                  continue
+              p = pathlib.Path(path)
+              try:
+                  data = p.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
+                  continue
+              for label, pattern in patterns:
+                  if re.search(pattern, data):
+                      violations.append((path, f"high-risk public-readiness pattern: {label}"))
+
+          print("# Public-readiness scan report")
+          print()
+          print(f"tracked_files_checked: {len(files)}")
+          print(f"violation_count: {len(violations)}")
+          print()
+
+          if violations:
+              print("## Violations")
+              for path, reason in violations:
+                  print(f"- `{path}`: {reason}")
+              sys.exit(1)
+
+          print("result: passed")
+          print("No forbidden tracked paths/extensions or high-confidence indicators found.")
+          PY
+
+          status=$?
+          echo "scan_status=$status" >> "$GITHUB_OUTPUT"
+          cat public_readiness_report.txt
+          exit 0
+
+      - name: Upload public-readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-readiness-report
+          path: public_readiness_report.txt
+
+      - name: Fail when public-readiness scan found violations
+        shell: bash
+        run: |
+          if [ "${{ steps.public_scan.outputs.scan_status }}" != "0" ]; then
+            echo "Public-readiness scan found violations. Download the public-readiness-report artifact."
+            exit 1
+          fi
+
+      - name: Check PR body contains guardrail statement
+        shell: bash
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+
+          if ! grep -qi "guardrail" <<< "${PR_BODY:-}"; then
+            echo "::error::PR body must include a Guardrails section or equivalent guardrail statement."
+            exit 1
+          fi

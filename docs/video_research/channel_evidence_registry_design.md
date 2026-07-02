@@ -30,6 +30,8 @@ Primary context:
 - `docs/video_research/channel_doctrine_map_v1.md`
 - `docs/video_research/channel_doctrine_evidence_index_v1.md`
 - `docs/video_research/channel_doctrine_map_v2_draft_proposal.md`
+- `docs/video_research/channel_evidence_registry_pilot_intermediate_batch_03.md`
+- `docs/video_research/channel_evidence_registry_pilot_intermediate_batch_03_review.md`
 - `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_synthesis.md`
 - `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_rows_21_27_caption_access_recovery_plan.md`
 
@@ -72,6 +74,7 @@ The future registry should be row-oriented. One row should describe one claim or
 | `source_doc` | yes | Repo-relative path to the committed Git-safe document supporting the row. |
 | `source_doc_section` | optional | Short section label or table name if useful for review. Do not use raw transcript offsets. |
 | `evidence_type` | yes | Classifies how the evidence reached Git. See taxonomy below. |
+| `source_granularity` | yes | Classifies the level of committed document structure supporting the row, such as one summary, an aggregate inventory, a synthesis, an audit, a doctrine map, or a boundary document. See taxonomy below. |
 | `claim_type` | yes | Research claim category: entry, stop, TP, RR, management, risk, study process, behavior, capital progression, no-trade filter, metadata status, or blocker. |
 | `doctrine_category` | optional | Higher-level doctrine bucket when applicable, such as timeframe hierarchy, entry confirmation, stop/invalidation, TP/exit, horizontal-line doctrine, or discretionary blockers. |
 | `setup_family` | optional | Pattern, wave, Dow, trend, range, support/resistance, process, behavior, capital, or other scoped family. |
@@ -108,7 +111,37 @@ Rules:
 - `summary_derived`, `audit_derived`, `synthesis_derived`, and `doctrine_derived` rows must point to committed Git-safe docs only.
 - No row may point to raw local transcript files, raw subtitle files, caption URLs, downloaded media, generated CSV/JSON, `data/`, or `results/`.
 
-## 6. Claim-type taxonomy
+## 6. Source-granularity taxonomy
+
+Recommended `source_granularity` values:
+
+| value | use |
+| --- | --- |
+| `per_video_summary` | Claim is supported by one committed paraphrased per-video summary. |
+| `aggregate_inventory` | Claim is supported by a committed aggregate report, candidate inventory, target table, or coverage table. |
+| `batch_synthesis` | Claim is supported by a committed batch or playlist synthesis. |
+| `completed_summary_audit` | Claim is supported by a committed completed-summary audit or quality boundary check. |
+| `blocked_status` | Row records unavailable, blocked, ambiguous, or not-yet-complete source status without creating content evidence. |
+| `doctrine_map` | Claim is supported by a committed doctrine map, doctrine evidence index, doctrine review, or doctrine proposal. |
+| `strategy_boundary_doc` | Row is supported by committed Strategy/corpus separation, mismatch, or boundary documentation. |
+
+`source_granularity` is separate from `evidence_type` because the two fields answer different review questions.
+
+- `evidence_type` records how the evidence reached the repository, such as metadata-only, summary-derived, audit-derived, synthesis-derived, doctrine-derived, strategy-boundary-derived, or blocked-status evidence.
+- `source_granularity` records the level of committed document structure that supports the row, such as a single per-video summary, a batch synthesis, an audit boundary, or a doctrine map.
+
+This separation prevents reviewers from treating one-video evidence, batch-level synthesis, audit status, and doctrine-map observations as if they had the same review scope. It also keeps blocked-status rows and Strategy-boundary rows visibly separate from content claims.
+
+Rules:
+
+- Use exactly one `source_granularity` value per row unless a later review explicitly approves multiple values.
+- If a claim combines materially different granularities, split it into separate rows.
+- If splitting would make the claim misleading, keep the row narrow and explain the dependency in `notes`.
+- `blocked_status` granularity must not support content or doctrine claims.
+- `aggregate_inventory` should not be treated as stronger evidence than the summary, synthesis, or audit context that explains the claim.
+- `doctrine_map` and `strategy_boundary_doc` values do not authorize Strategy A/B/B2/C changes.
+
+## 7. Claim-type taxonomy
 
 Recommended `claim_type` values:
 
@@ -129,7 +162,7 @@ Recommended `claim_type` values:
 
 The registry may allow multiple values only if the row remains readable. If a row becomes too broad, split it into separate claim rows.
 
-## 7. Readiness and blocker taxonomy
+## 8. Readiness and blocker taxonomy
 
 Recommended `mechanical_readiness` values:
 
@@ -164,7 +197,7 @@ Rules:
 - `doctrine_only` rows may later inform review questions, but they should not become code requirements by default.
 - `blocked` rows should recommend wait, no-op, or human decision rather than source-access widening.
 
-## 8. Title-only vs summary-derived evidence rules
+## 9. Title-only vs summary-derived evidence rules
 
 The registry must prevent title language from becoming a project conclusion.
 
@@ -184,7 +217,7 @@ Registry rules:
 - If a committed summary includes a compact title, the registry must distinguish that title from the summary-derived claim.
 - Blocked rows cannot be converted into summary-derived evidence from title metadata alone.
 
-## 9. Strategy/corpus separation rules
+## 10. Strategy/corpus separation rules
 
 The registry is a corpus-line artifact. It may support later Strategy A/B review only by creating traceable questions or mismatch candidates.
 
@@ -206,20 +239,52 @@ Rules:
 - A row must not treat corpus doctrine as accepted implementation guidance.
 - Future Strategy review must cite evidence rows and source docs, but must still make a separate design decision before changing code or backtests.
 
-## 10. Review workflow
+## 11. Larger-registry Markdown layout
+
+A small pilot can use one wide Markdown table to test every field in one place. Larger registry docs should avoid a single very wide table because review becomes error-prone and field boundaries become hard to inspect.
+
+Recommended larger-registry layout:
+
+1. Start with a compact overview table containing stable routing fields:
+   - `evidence_id`
+   - `claim_text`
+   - `source_granularity`
+   - `evidence_type`
+   - `claim_type`
+   - `mechanical_readiness`
+   - `strategy_relevance`
+   - `review_status`
+2. Add per-row detail sections for:
+   - `source_doc`
+   - `source_doc_section`
+   - `video_id`
+   - `playlist_or_batch`
+   - `doctrine_category`
+   - `setup_family`
+   - `blocker_reason`
+   - `unresolved_definition`
+   - `title_only_warning`
+   - `raw_artifact_status`
+   - `corpus_strategy_boundary`
+   - `notes`
+3. End with a short validation and guardrail section.
+
+This structure keeps the registry Git-reviewable while avoiding CSV, JSON, database dumps, raw artifacts, or generated result files unless a future issue explicitly and narrowly authorizes a different format.
+
+## 12. Review workflow
 
 Recommended future workflow:
 
 1. Select a narrow committed-doc source set, such as one batch synthesis and its audit.
 2. Extract only compact claim rows from those docs.
-3. Mark every row with `evidence_type`, `mechanical_readiness`, `title_only_warning`, and `strategy_relevance`.
+3. Mark every row with `evidence_type`, `source_granularity`, `mechanical_readiness`, `title_only_warning`, and `strategy_relevance`.
 4. Run a forbidden-artifact scan before commit.
 5. Review rows for overclaiming, title-only leakage, raw-text leakage, and Strategy/corpus mixing.
 6. Only after review, use the rows to support doctrine-map review or a separately authorized Strategy-line mismatch plan.
 
-The first registry population PR should be a small pilot, not a full backfill. A reasonable pilot would extract rows from one committed playlist-led synthesis plus its completed-summary audit, then review whether the schema is too broad or too narrow.
+The first larger registry population PR should still be narrow, not a full backfill. A reasonable next population step would update the existing Intermediate Batch 03 pilot rows to use `source_granularity` and the larger-registry Markdown layout before any broader corpus backfill.
 
-## 11. Validation and guardrails
+## 13. Validation and guardrails
 
 Future registry PRs should validate:
 
@@ -243,27 +308,27 @@ git status --short
 
 When registry rows are added later, also run a changed-file sanity check and a forbidden-artifact path/content scan over the changed files.
 
-## 12. Design decision
+## 14. Design decision
 
 Readiness decision:
 
-`channel_evidence_registry_design_ready_for_review`
+`channel_evidence_registry_design_ready_with_source_granularity`
 
-Reason: the future channel evidence registry should be claim-level, source-doc-traceable, and conservative. It should preserve the separation among metadata, paraphrased summary evidence, audits, syntheses, doctrine observations, mechanical candidates, discretionary blockers, and Strategy relevance. It should not store raw artifacts, generated data, or executable strategy decisions.
+Reason: the future channel evidence registry should be claim-level, source-doc-traceable, and conservative. It should preserve the separation among metadata, paraphrased summary evidence, audits, syntheses, doctrine observations, mechanical candidates, discretionary blockers, source granularity, and Strategy relevance. It should not store raw artifacts, generated data, or executable strategy decisions.
 
-## 13. Recommended next docs-only task
+## 15. Recommended next docs-only task
 
 Recommended next issue:
 
-`[codex] Pilot channel evidence registry rows from Intermediate Batch 03 synthesis`
+`[codex] Update Intermediate Batch 03 pilot evidence registry rows with source_granularity`
 
 Recommended scope:
 
 - use committed repository docs only;
-- create a small Markdown pilot registry table, not CSV or JSON;
-- source the pilot only from `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_synthesis.md` and its committed audit/review context;
-- include no more than `12` claim rows;
-- include `evidence_id`, `claim_text`, `source_doc`, `evidence_type`, `claim_type`, `mechanical_readiness`, `blocker_reason`, `strategy_relevance`, `title_only_warning`, and `raw_artifact_status`;
+- update the existing Intermediate Batch 03 pilot registry rows to include `source_granularity`;
+- keep the row set unchanged unless a separate issue authorizes a new pilot or backfill;
+- use the controlled value set from this design;
+- consider shifting the pilot toward compact overview plus per-row details if the wide table remains hard to review;
 - do not update Doctrine Map v1, create or finalize Doctrine Map v2, modify Strategy A/B/B2/C, run backtests, access source material, or create generated artifacts.
 
-The pilot should test the schema before any larger backfill.
+This should be a docs-only schema-application task before any larger registry backfill.

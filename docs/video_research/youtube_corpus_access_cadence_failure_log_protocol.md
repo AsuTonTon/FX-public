@@ -14,6 +14,8 @@ methods, doctrine updates, or Strategy A/B/B2/C behavior changes.
 Purpose:
 
 - avoid repeated access pressure;
+- estimate a practical access threshold from controlled evidence instead of
+  assuming a low fixed cap;
 - make future source touches auditable;
 - preserve Git-safe failure logging;
 - keep fallback-only work available when source state is blocked, fragile, or
@@ -55,12 +57,12 @@ Strategy changes.
 
 Operational decision:
 
-`source_access_fragile_status_only_protocol_required`
+`source_access_threshold_discovery_protocol_required`
 
 Reason: recent committed docs show both prior blocked access and a later tiny
-successful probe. Future work must therefore keep source touches small,
-human-paced, timestamped, and immediately stoppable instead of expanding from a
-single successful slice.
+successful probe. Future work must therefore discover the practical access
+threshold with staged, timestamped, immediately stoppable source touches instead
+of guessing a permanently low daily cap or expanding without a stop protocol.
 
 ## 4. Cadence decisions
 
@@ -69,22 +71,26 @@ touches.
 
 | decision | required value |
 | --- | --- |
-| Minimum minutes between source touches | `30_minutes` while recovery remains fragile. |
-| Maximum source touches per run | `1` video or source item. |
-| Maximum source touches per JST day while recovery remains fragile | `4` total source touches. |
+| Discovery goal | Estimate the practical threshold where limit signals begin. |
+| Discovery stage 1 cap | Up to `10` source touches in one JST day. |
+| Discovery stage 2 cap | Up to `20` source touches in one JST day, only if stage 1 has no blocker. |
+| Discovery stage 3 cap | Up to `30` source touches in one JST day, only if stage 2 has no blocker. |
+| Discovery stage 4 cap | Up to `50` source touches in one JST day, only if stage 3 has no blocker. |
+| Minimum spacing between touches | Record and keep consistent inside each discovery stage. |
 | Parallel source access | prohibited. |
-| Immediate retry in the same run | prohibited. |
-| Expansion after a successful touch | prohibited unless a later issue explicitly authorizes the next exact slice. |
+| Immediate retry after a failure | prohibited. |
+| Expansion after a successful stage | allowed only by a later issue that explicitly authorizes the next discovery stage. |
 | Default mode when authorization or wait proof is missing | `fallback_only`. |
 
-Rationale: the older policy permits a 15-minute human-paced loop and an 8 to 10
-daily cap when conditions are stable. The current corpus recovery state is still
-fragile, so this protocol tightens the default to 30-minute spacing, one touch
-per run, and four touches per JST day until a later cadence retrospective
-explicitly records that a looser cadence is safe.
+Rationale: the older policy used conservative fixed caps, and this protocol
+previously tightened them further while the recovery state was fragile. The
+human direction for the corpus line is now to discover a practical non-bypass
+threshold rather than assume a low cap for hundreds of videos.
 
-The cap is a maximum, not a quota. Use fewer touches or no touches when the task
-can be completed from committed public Markdown.
+The stage cap is a maximum, not a quota. Use fewer touches or no touches when
+the task can be completed from committed public Markdown. Successful completion
+of one stage does not authorize bypass methods, raw artifact commits, or
+unauthorized expansion beyond the next explicitly authorized stage.
 
 ## 5. Timestamp requirements
 
@@ -96,6 +102,9 @@ Required fields:
 | --- | --- | --- |
 | Authorized source touch starts | `touch_started_at_jst` | Record the local JST start time before the source touch. |
 | Authorized source touch completes | `touch_completed_at_jst` | Record the local JST completion time after the outcome is known. |
+| Discovery stage | `discovery_stage` | Record the authorized stage number before the source touch. |
+| In-stage spacing | `spacing_minutes` | Record the spacing used consistently inside the stage. |
+| Daily cumulative count | `source_touch_count_this_jst_day` | Record the cumulative source-touch count for the JST day after each touch. |
 | Failure occurs | `failure_observed_at_jst` | Record when the failure category was observed. |
 | Cooldown starts | `cooldown_started_at_jst` | Record the same time as the first cooldown-triggering failure unless a later approved source proves a different time. |
 | Next allowed consideration | `next_allowed_attempt_not_before_jst` | Record the earliest future time at which a new issue may consider a source touch. |
@@ -120,10 +129,15 @@ Use controlled failure categories only.
 | `raw_artifact_needed` | Stop; do not create raw artifacts. | Until a future issue changes scope, subject to repository guardrails. |
 | `bypass_like_access_needed` | Stop; do not use the method. | Indefinite unless repository policy changes. |
 
+When a stop occurs, record the failure time, discovery stage, cumulative JST-day
+count, spacing, affected row or video, outcome label, and next allowed attempt
+time. The first failure point is the observed upper-bound signal. The
+recommended operating cap after a failure should be below the last known clean
+stage unless a later human decision changes it.
+
 If any 429 or IP-limit repeats after a cooldown, the next wait must be at least
-`72_hours`, the next daily cap must be reduced below four touches, and fallback
-work should remain the default until a docs-only retrospective reviews the
-pattern.
+`72_hours`, and fallback work should remain the default until a docs-only
+retrospective reviews the pattern.
 
 Empty or unavailable body states do not create content evidence. They may only
 support blocked-status, cadence, cooldown, or fallback-routing decisions.
@@ -156,9 +170,7 @@ blocker reporting.
 
 Stop expanding a batch when any of these occurs:
 
-- one source touch has already occurred in the current run;
-- four source touches have already occurred on the same JST day while recovery
-  remains fragile;
+- the authorized discovery stage cap has been reached;
 - any 429 or IP-limit response occurs;
 - two empty-body or unavailable-body outcomes occur in the same batch window;
 - source state is ambiguous;
@@ -169,8 +181,9 @@ Stop expanding a batch when any of these occurs:
 - duplicate checks find an existing open issue, open PR, deterministic branch,
   or recently merged PR for the same deliverable.
 
-Successful access for one row or tiny slice must not be treated as permission to
-continue through the rest of a batch.
+Successful access for one row, one tiny slice, or one discovery stage must not
+be treated as permission to continue through the rest of a batch or into the
+next discovery stage without explicit authorization.
 
 ## 9. Git-safe status-only output
 
@@ -184,12 +197,15 @@ Future source-touch status notes or ledgers may commit only Git-safe fields:
 | `touch_completed_at_jst` | `YYYY-MM-DD HH:MM JST` |
 | `failure_observed_at_jst` | `YYYY-MM-DD HH:MM JST`, `none`, or `unknown_in_committed_git_safe_docs` |
 | `next_allowed_attempt_not_before_jst` | `YYYY-MM-DD HH:MM JST`, `not_applicable`, or `not_proven_from_committed_docs` |
+| `discovery_stage` | `stage_1`, `stage_2`, `stage_3`, `stage_4`, or `not_applicable` |
+| `spacing_minutes` | integer minutes or `not_applicable` |
 | `target_slice` | approved batch and row range only |
 | `public_video_id` | public video ID only |
 | `source_touch_count_this_run` | integer |
 | `source_touch_count_this_jst_day` | integer or `unknown_in_committed_git_safe_docs` |
 | `outcome_label` | learning-loop taxonomy value |
 | `failure_category` | controlled category from this protocol |
+| `observed_upper_bound_signal` | compact label such as `none`, `stage_2_count_14_429`, or `unknown` |
 | `stop_decision` | compact status label |
 | `fallback_task` | safe docs-only task or `none` |
 | `notes` | compact claim-level note only |
@@ -275,24 +291,23 @@ Protocol decision:
 
 `youtube_corpus_access_cadence_failure_log_protocol_ready`
 
-Reason: this protocol tightens future fragile recovery work to one source touch
-per run, 30-minute spacing, four touches per JST day, explicit failure
-timestamps, conservative cooldown waits, hard stop rules, and Git-safe
-status-only output. It preserves corpus/Strategy separation and does not
-authorize any new source access.
+Reason: this protocol reframes future fragile recovery work around staged
+threshold discovery, explicit timing and count logging, conservative cooldown
+waits, hard stop rules, and Git-safe status-only output. It preserves
+corpus/Strategy separation and does not authorize any new source access by
+itself.
 
 ## 14. Recommended next task
 
 Recommended next task:
 
-`[codex] Intermediate Batch 03 rows 21-22 compact summary recovery`
+`[codex] Intermediate Batch 03 row 21 compact summary recovery`
 
 Recommended scope:
 
-- use only the separately authorized rows `21..22` recovery state already
-  recorded in committed docs;
-- create compact paraphrased summaries only if the controlling issue explicitly
-  authorizes summary recovery;
-- do not touch rows `23..27`;
-- do not run broader probes;
+- use only the separately authorized row `21` recovery scope;
+- create a compact paraphrased summary only if the controlling issue explicitly
+  authorizes summary recovery and the source state supports it;
+- do not touch row `22` or rows `23..27`;
+- do not run broader probes or threshold-discovery stages under a summary issue;
 - do not update doctrine or Strategy behavior.

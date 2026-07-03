@@ -51,6 +51,7 @@ Updated stale or potentially stale routing language in:
 - `docs/video_research/vkaA9MCRlx4/strategy_b_implementation_notes.md`;
 - `docs/video_research/vkaA9MCRlx4/strategy_b_low_r_structural_tp_authorization_issue_skeleton.md`;
 - `docs/video_research/vkaA9MCRlx4/strategy_b_low_r_structural_tp_authorization_review_checklist.md`;
+- `docs/video_research/vkaA9MCRlx4/strategy_b_low_r_structural_tp_readiness_note.md`;
 - `docs/video_research/vkaA9MCRlx4/strategy_b_stop_anchor_diagnostic_local_only_run_report.md`;
 - `docs/video_research/vkaA9MCRlx4/strategy_b_stop_anchor_diagnostic_local_only_run_report_after_handoff.md`;
 - `docs/video_research/vkaA9MCRlx4/strategy_b_stop_anchor_diagnostic_protocol_guardrails.md`;

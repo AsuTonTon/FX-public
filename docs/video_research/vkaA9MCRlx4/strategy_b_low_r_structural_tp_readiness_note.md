@@ -282,15 +282,21 @@ Confirmed:
 
 Recommended next task:
 
-`[codex] Strategy B low-R structural TP readiness-to-authorization bridge`
+Return to the public diagnostic boundary in
+`strategy_b_public_diagnostic_boundary_while_corpus_incomplete.md`.
 
 Suggested scope:
 
 - docs-only;
-- use committed low-R structural TP authorization, checklist, readiness, and
-  runbook docs only;
-- define the minimal fields that would move a future issue from readiness note
-  to an executable local-only authorization packet;
+- use committed public repository Markdown only;
+- keep local-only diagnostic authorization, packet construction, sample
+  selection, Pass A / Pass B review, worksheet, mapping, reveal-table,
+  chart-packet, and review-run work paused until explicit human approval is
+  given after corpus input, visual evidence review, and doctrine synthesis
+  dependencies are addressed;
+- prefer safe public tasks such as corpus coverage status, evidence-registry
+  cleanup, source-availability/source-name alignment, or boundary/status
+  cleanup;
 - do not run diagnostics;
 - do not access local data or generated artifacts;
 - do not change Strategy B behavior, code, parameters, configs, tests, runner

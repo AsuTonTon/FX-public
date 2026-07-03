@@ -166,11 +166,39 @@ are satisfied:
 If any condition is missing, the correct action is no-op, fallback-only docs, or
 blocker reporting.
 
-## 8. Batch expansion stop rules
+## 8. Active controlling-issue recheck
+
+Immediately before any YouTube, caption, transcript, or other source touch, the
+worker must recheck the controlling issue and current repository state. This
+check must happen after duplicate checks and after the source target is selected,
+but before the first source-touch command or request is run.
+
+The recheck must confirm all of the following:
+
+1. The controlling issue is still open.
+2. The controlling issue still authorizes the exact source class, target slice,
+   and maximum touch count about to be used.
+3. No newer human instruction in the issue, linked issue, or project direction
+   supersedes the source-touch task.
+4. No open PR, merged PR, deterministic branch, or recently closed duplicate PR
+   already changes the governing source-access protocol or completes the same
+   source-touch/status deliverable.
+5. No later issue has replaced the task, narrowed the scope, or moved the work
+   back to fallback-only documentation.
+
+If any item fails, the worker must stop before source access. The correct output
+is no source-touch result: do not run the source touch, do not record new
+source-access timing/count/outcome fields, and do not open a PR that presents a
+new source-touch result. A docs-only blocker or fallback note may be produced
+only when it uses committed public repository Markdown and does not introduce
+new source-touch evidence.
+
+## 9. Batch expansion stop rules
 
 Stop expanding a batch when any of these occurs:
 
 - the authorized discovery stage cap has been reached;
+- the active controlling-issue recheck fails;
 - any 429 or IP-limit response occurs;
 - two empty-body or unavailable-body outcomes occur in the same batch window;
 - source state is ambiguous;
@@ -185,7 +213,7 @@ Successful access for one row, one tiny slice, or one discovery stage must not
 be treated as permission to continue through the rest of a batch or into the
 next discovery stage without explicit authorization.
 
-## 9. Git-safe status-only output
+## 10. Git-safe status-only output
 
 Future source-touch status notes or ledgers may commit only Git-safe fields:
 
@@ -225,11 +253,12 @@ Forbidden output remains:
 - generated candidate, event, trade, metric, or result artifacts;
 - cookies, sessions, IP addresses, credentials, tokens, or secrets.
 
-## 10. Fallback mode
+## 11. Fallback mode
 
 Use `fallback_only` when source access is unauthorized, cooldown state is
 unclear, a wait period has not elapsed, daily cap is reached, duplicate checks
-find existing coverage, or a stop rule fires.
+find existing coverage, the active controlling-issue recheck fails, or a stop
+rule fires.
 
 Allowed fallback tasks:
 
@@ -245,7 +274,7 @@ Allowed fallback tasks:
 Fallback mode must use committed public repository Markdown only unless a
 future controlling issue explicitly authorizes another source class.
 
-## 11. Strategy and doctrine boundary
+## 12. Strategy and doctrine boundary
 
 This protocol belongs to the YouTube channel-wide corpus line only.
 
@@ -268,7 +297,7 @@ failure categories must not change:
 If a future corpus finding appears relevant to Strategy A/B, it must be routed
 to a separate Strategy-line review before any integration.
 
-## 12. Guardrail confirmation
+## 13. Guardrail confirmation
 
 This protocol is docs-only and uses committed public repository Markdown only.
 
@@ -285,7 +314,7 @@ trading-rule changes, perform parameter optimization, update doctrine
 conclusions, or make profitability, trading-readiness, win-rate,
 money-making, or trading-recommendation claims.
 
-## 13. Protocol decision
+## 14. Protocol decision
 
 Protocol decision:
 
@@ -293,11 +322,11 @@ Protocol decision:
 
 Reason: this protocol reframes future fragile recovery work around staged
 threshold discovery, explicit timing and count logging, conservative cooldown
-waits, hard stop rules, and Git-safe status-only output. It preserves
-corpus/Strategy separation and does not authorize any new source access by
-itself.
+waits, a mandatory active-issue recheck before source access, hard stop rules,
+and Git-safe status-only output. It preserves corpus/Strategy separation and
+does not authorize any new source access by itself.
 
-## 14. Recommended next task
+## 15. Recommended next task
 
 Recommended next task:
 

@@ -162,3 +162,66 @@ Recommended scope:
   live chat, community posts, full descriptions, downloaded media, ASR, market
   data, broker/live systems, or non-approved sources unless the controlling
   issue explicitly authorizes that exact route.
+
+## 10. Post-PR #160 Inventory Update
+
+Update status:
+
+`post_batch_03_rows_29_35_compact_summary_complete_audited`
+
+This section supersedes the earlier rows `29..35` target-selection handoff for
+inventory and coverage tracking. The earlier sections remain as the historical
+target-selection record; rows `29..35` are no longer pending threshold
+discovery or summary recovery.
+
+Completion evidence:
+
+- PR #158 added the committed compact-summary file:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_29_35_compact_summaries.md`.
+- PR #160 added the committed compact-summary audit:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_29_35_compact_summary_audit.md`.
+- The audit decision is
+  `post_batch_03_rows_29_35_compact_summaries_ready_for_inventory_completion`.
+
+Inventory status table:
+
+| source-order row | public video ID | inventory status | compact-summary evidence | audit evidence |
+| ---: | --- | --- | --- | --- |
+| 29 | `OhErZPuuR94` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 30 | `zb2q1PEf0NQ` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 31 | `RZCV7guWku4` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 32 | `PcJkNmfy0is` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 33 | `N8P1W7bsJYI` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 34 | `t2iZIW4N6U8` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+| 35 | `4ugf182c4bA` | `compact_summary_complete_audited` | PR #158 compact-summary file | PR #160 compact-summary audit |
+
+Allowed inventory use:
+
+- count rows `29..35` as completed compact summaries for corpus inventory and
+  coverage tracking;
+- cite the compact-summary file and compact-summary audit in later
+  corpus-only coverage work;
+- start any later target-slice selection after row `35`, unless a future issue
+  explicitly reviews an earlier-row correction.
+
+Forbidden inventory use:
+
+- do not treat these rows as Strategy A/B/B2/C evidence;
+- do not use this update as a doctrine conclusion;
+- do not convert these summaries into executable trading rules;
+- do not infer trading readiness, win rate, profitability, broker/live
+  suitability, market-data conclusions, or optimization targets;
+- do not authorize additional source access from this inventory update.
+
+Next recommended task:
+
+`[codex] Select next post-Batch-03 corpus target slice after rows 29-35 completion`
+
+Recommended scope:
+
+- use committed Markdown only;
+- preserve source-order accounting after row `35`;
+- keep target selection separate from source access and summary recovery;
+- do not run source access, rewrite summaries, update doctrine, change Strategy
+  behavior, access market data, use broker/live systems, optimize parameters,
+  or make profitability claims.

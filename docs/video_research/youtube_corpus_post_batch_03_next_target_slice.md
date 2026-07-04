@@ -316,3 +316,91 @@ Recommended scope:
   data, broker/live systems, non-approved sources, or raw metadata dumps;
 - keep metadata resolution separate from threshold discovery and summary
   recovery.
+
+## 12. Post-Row-35 Target Metadata Resolution
+
+Task:
+
+`post_batch_03_rows_36_45_target_metadata_resolution`
+
+This section resolves the Git-safe identity fields requested after the post-row-35
+target-selection result above. It uses the committed playlist ID from
+`channel_playlist_metadata_reconciliation_report.md` and Issue `#165`'s bounded
+metadata-only authorization because committed docs did not contain public video
+IDs or compact titles for rows `36`, `37`, `38`, `41`, `42`, `43`, or `45`.
+
+Bounded metadata route:
+
+- approved intermediate playlist metadata only;
+- source-order row, public video ID, and compact title only;
+- bounded to rows `36..45`;
+- no captions, subtitles, transcript bodies, source-body text, caption URLs,
+  request URLs, comments, live chat, community posts, full descriptions,
+  downloaded media, ASR, raw metadata dump, CSV, JSON, `data/`, or `results`
+  artifact.
+
+Validation anchor:
+
+- the bounded metadata read returned `68` unique playlist entries;
+- committed anchor rows matched the prior reconciliation report:
+  `2:_sx3dCvPXac`, `28:gYkU8nVa-hE`, `39:6vGtLPFfWYQ`,
+  `40:DeRVQNJtq3s`, `44:e4N22IkeOs4`, `48:HuNeo8FfBO8`,
+  `57:16Kb39TFFek`, and `66:GIHwOx6iwiw`.
+
+Title warning: compact titles below are metadata only. Promotional,
+outcome-like, or hype wording in titles, including words about winning,
+profit, money, "god-tier" episodes, or simple/easy methods, is not treated as a
+project conclusion, doctrine finding, Strategy evidence, trading-readiness
+claim, win-rate claim, or profitability claim.
+
+Resolved target-row accounting:
+
+| source-order row | public video ID | compact title | committed completion or skip status | eligibility label | reason |
+| ---: | --- | --- | --- | --- | --- |
+| 36 | `MOOHfd69A6w` | `【神回】手取り月14万円からFXで人生逆転する方法` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | First unresolved source-order row after completed rows `29..35`; metadata is now resolved for a later separately authorized source-touch issue. |
+| 37 | `10lr3YzO4jU` | `【神回】エリオット波動4波、5波の見極め方とトレード方法を完全解説` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; title wording is metadata only. |
+| 38 | `nBH-GgQnE60` | `【神回】勝ってる人は知ってるローソク足の正しい見方とは？` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row before the known row-39 skip marker. |
+| 39 | `6vGtLPFfWYQ` | `【トレード厳禁】お金が減る負けやすい相場とは？` | `already_summarized_audited_prior_corpus_work` | `excluded_already_completed` | Carried forward as a completed-skip row; the video ID matches the committed reconciliation report. |
+| 40 | `DeRVQNJtq3s` | `【超簡単】本当に効く重要水平線の引き方を公開する。` | `already_summarized_audited_prior_corpus_work` | `excluded_already_completed` | Carried forward as a completed-skip row; the video ID matches the committed reconciliation report. |
+| 41 | `bc8InDoa7uA` | `【神回】少額から爆益になるピラミッディング方法を実践解説` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row after the row-39 and row-40 skip markers. |
+| 42 | `xHANBTIp9PU` | `【これが正解】勝てるトレードルールの本当の作り方` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; title wording is metadata only. |
+| 43 | `-j2Mc--yLNo` | `【神回】FXで何をやっても勝てないあなたへ` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row before the known row-44 skip marker. |
+| 44 | `e4N22IkeOs4` | `【超簡単】レンジ相場を簡単に攻略する裏技` | `already_summarized_audited_prior_corpus_work` | `excluded_already_completed` | Carried forward as a completed-skip row; the video ID matches the committed reconciliation report. |
+| 45 | `nKmetD4L2RI` | `【完全版】フィボナッチの本当の使い方と具体的なエントリー方法` | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Seventh unresolved candidate after row `35` when known completed rows `39`, `40`, and `44` are skipped. |
+
+Decision:
+
+`post_batch_03_rows_36_45_target_metadata_resolved`
+
+Allowed interpretation:
+
+- rows `36`, `37`, `38`, `41`, `42`, `43`, and `45` now have Git-safe
+  playlist-order identity fields for a future separately authorized
+  threshold-discovery issue;
+- rows `39`, `40`, and `44` remain completed-skip references by default;
+- this is metadata resolution only and remains inside the YouTube
+  channel-wide corpus line.
+
+Forbidden interpretation:
+
+- do not treat title metadata as video-content evidence, doctrine evidence,
+  mechanical-rule evidence, Strategy evidence, trading readiness, win rate, or
+  profitability;
+- do not infer caption availability, transcript availability, source-body
+  accessibility, source-touch success likelihood, or summary eligibility from
+  this metadata-only section;
+- do not run threshold discovery, transcript access, caption access, summary
+  recovery, doctrine updates, Strategy changes, or re-summarization from this
+  section alone.
+
+Next recommended task:
+
+`[codex] YouTube threshold discovery over post-Batch-03 rows 36-45 resolved target candidates`
+
+Recommended scope:
+
+- target only rows `36`, `37`, `38`, `41`, `42`, `43`, and `45`;
+- carry rows `39`, `40`, and `44` forward as completed-skip rows;
+- repeat all active source-access guardrails before any future source touch;
+- keep threshold discovery separate from compact-summary recovery and doctrine
+  updates.

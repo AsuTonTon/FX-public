@@ -586,3 +586,100 @@ Recommended scope:
   data, broker/live systems, non-approved sources, or raw metadata dumps;
 - keep metadata resolution separate from threshold discovery and summary
   recovery.
+
+## 15. Post-Row-45 Target Metadata Resolution
+
+Task:
+
+`post_batch_03_rows_46_53_target_metadata_resolution`
+
+This section resolves the Git-safe identity fields requested by Issue `#179`
+after the post-row-45 target-selection result above. It uses the committed
+intermediate playlist ID from
+`channel_playlist_metadata_reconciliation_report.md` and Issue `#179`'s bounded
+metadata-only authorization because committed docs did not contain public video
+IDs or compact titles for rows `46`, `47`, `49`, `50`, `51`, `52`, or `53`.
+
+Bounded metadata route:
+
+- approved intermediate playlist metadata only;
+- source-order row, public video ID, and compact title only;
+- bounded to rows `46..53`, with row `48` carried forward as completed-skip;
+- no captions, subtitles, transcript bodies, source-body text, caption URLs,
+  request URLs, comments, live chat, community posts, full descriptions,
+  downloaded media, ASR, raw metadata dump, CSV, JSON, `data/`, or `results`
+  artifact.
+
+Validation anchor:
+
+- the bounded metadata read returned `68` unique playlist entries;
+- committed anchor rows matched the prior reconciliation report:
+  `2:_sx3dCvPXac`, `28:gYkU8nVa-hE`, `39:6vGtLPFfWYQ`,
+  `40:DeRVQNJtq3s`, `44:e4N22IkeOs4`, `48:HuNeo8FfBO8`,
+  `57:16Kb39TFFek`, and `66:GIHwOx6iwiw`;
+- the playlist page exposed metadata entries through the current playlist
+  metadata view shape rather than the older `playlistVideoRenderer` shape, and
+  no raw response was retained or committed.
+
+Title warning: compact titles below are metadata only. Promotional,
+outcome-like, or hype wording in titles, including words about winning,
+profit, money, simple/easy methods, or high-probability methods, is not treated
+as a project conclusion, doctrine finding, Strategy evidence, trading-readiness
+claim, win-rate claim, or profitability claim.
+
+Resolved target-row accounting:
+
+Note: compact titles in this table are stored as HTML numeric entities so the
+Markdown remains ASCII-stable in this automation surface. They are still title
+metadata only.
+
+| source-order row | public video ID | compact title | committed completion or skip status | eligibility label | reason |
+| ---: | --- | --- | --- | --- | --- |
+| 46 | `in_mPMGKW7E` | &#x3010;&#x795E;&#x56DE;&#x3011;FX&#x3067;&#x52DD;&#x3061;&#x7D9A;&#x3051;&#x3066;&#x308B;&#x4EBA;&#x306E;&#x5171;&#x901A;&#x3059;&#x308B;&#x7279;&#x5FB4;&#x3068;&#x306F;&#xFF1F; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | First unresolved source-order row after completed row `45`; metadata is now resolved for a later separately authorized source-touch issue. |
+| 47 | `roC1ka1PfrA` | &#x3010;&#x8D85;&#x7C21;&#x5358;&#x3011;&#x305F;&#x3063;&#x305F;10&#x79D2;&#x3067;&#x74B0;&#x5883;&#x8A8D;&#x8B58;&#x3092;&#x3059;&#x308B;&#x65B9;&#x6CD5; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; title wording is metadata only. |
+| 48 | `HuNeo8FfBO8` | &#x3010;&#x5B8C;&#x5168;&#x7248;&#x3011;&#x30A8;&#x30EA;&#x30AA;&#x30C3;&#x30C8;&#x6CE2;&#x52D5;1&#x6CE2;.2&#x6CE2;.3&#x6CE2;&#x306E;&#x898B;&#x6975;&#x3081;&#x65B9;&#x3068;&#x30C8;&#x30EC;&#x30FC;&#x30C9;&#x65B9;&#x6CD5;&#x3092;&#x5B8C;&#x5168;&#x89E3;&#x8AAC; | `already_summarized_audited_prior_corpus_work` | `excluded_already_completed` | Carried forward as a completed-skip row; the video ID matches the committed reconciliation report. |
+| 49 | `O6MylkTmq9k` | &#x3010;&#x795E;&#x56DE;&#x3011;&#x300C;&#x62BC;&#x3057;&#x76EE;&#x8CB7;&#x3044;&#x300D;&#x300C;&#x623B;&#x308A;&#x58F2;&#x308A;&#x300D;&#x306E;&#x5177;&#x4F53;&#x7684;&#x306A;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x624B;&#x9806;&#x3092;&#x30C1;&#x30E3;&#x30FC;&#x30C8;&#x4ED8;&#x304D;&#x3067;&#x89E3;&#x8AAC; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row after the row-48 skip marker; title wording is metadata only. |
+| 50 | `ue85yIlTH0k` | &#x3010;&#x795E;&#x56DE;&#x3011;&#x3053;&#x308C;&#x3092;&#x898B;&#x308B;&#x3060;&#x3051;&#x3067;&#x52DD;&#x3061;&#x7D44;&#x30C8;&#x30EC;&#x30FC;&#x30C0;&#x30FC;&#x306B;&#x306A;&#x308C;&#x308B;&#x3002;&#x30C1;&#x30E3;&#x30FC;&#x30C8;&#x89E3;&#x8AAC;&#x4ED8;&#x304D; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; no content evidence is inferred from the title. |
+| 51 | `s5bdVUXg6BA` | &#x3010;&#x3086;&#x3063;&#x304F;&#x308A;&#x89E3;&#x8AAC;&#x3011;FX&#x3067;&#x4E0A;&#x4E0B;&#x4E88;&#x60F3;&#x3092;&#x3057;&#x3066;&#x3082;&#x52DD;&#x3066;&#x306A;&#x3044;&#x7406;&#x7531; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; title wording is metadata only. |
+| 52 | `QXcGD2L4f0E` | &#x3010;&#x89E3;&#x6C7A;&#x7B56;&#x3042;&#x308A;&#x3011;9&#x5272;&#x4EE5;&#x4E0A;&#x306E;&#x4EBA;&#x304C;FX&#x3067;&#x52DD;&#x3066;&#x306A;&#x3044;&#x6839;&#x672C;&#x539F;&#x56E0;&#x3068;&#x306F;&#xFF1F; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Next unresolved source-order row; no project result or performance conclusion is inferred. |
+| 53 | `r8CnJXnFvGY` | &#x3010;&#x9244;&#x677F;&#x624B;&#x6CD5;&#x3011;&#x9AD8;&#x78BA;&#x7387;&#x3067;&#x52DD;&#x3066;&#x308B;&#x30C8;&#x30EC;&#x30F3;&#x30C9;&#x30D5;&#x30A9;&#x30ED;&#x30FC;&#x306E;&#x624B;&#x6CD5;&#x516C;&#x958B; | `no_committed_summary_or_audit_hit_found_after_metadata_resolution` | `eligible_metadata_only_target_candidate` | Seventh unresolved candidate after row `45` when known completed row `48` is skipped. |
+
+Decision:
+
+`post_batch_03_rows_46_53_target_metadata_resolved_with_row_48_completed_skip`
+
+Allowed interpretation:
+
+- rows `46`, `47`, `49`, `50`, `51`, `52`, and `53` now have Git-safe
+  playlist-order identity fields for a future separately authorized
+  threshold-discovery issue;
+- row `48` remains a completed-skip reference by default;
+- rows `57` and `66` remain later completed-skip references if a future target
+  window reaches them;
+- this is metadata resolution only and remains inside the YouTube channel-wide
+  corpus line.
+
+Forbidden interpretation:
+
+- do not treat title metadata as video-content evidence, doctrine evidence,
+  mechanical-rule evidence, Strategy evidence, trading readiness, win rate, or
+  profitability;
+- do not infer caption availability, transcript availability, source-body
+  accessibility, source-touch success likelihood, or summary eligibility from
+  this metadata-only section;
+- do not run threshold discovery, transcript access, caption access, summary
+  recovery, doctrine updates, Strategy changes, or re-summarization from this
+  section alone.
+
+Next recommended task:
+
+`[codex] YouTube threshold discovery over post-Batch-03 rows 46-53 resolved target candidates`
+
+Recommended scope:
+
+- target only rows `46`, `47`, `49`, `50`, `51`, `52`, and `53`;
+- carry row `48` forward as a completed-skip row;
+- repeat all active source-access guardrails before any future source touch;
+- keep threshold discovery separate from compact-summary recovery, doctrine
+  updates, Strategy changes, market-data work, broker/live work, optimization,
+  and profitability analysis.

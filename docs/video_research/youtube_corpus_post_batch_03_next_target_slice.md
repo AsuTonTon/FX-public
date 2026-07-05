@@ -977,3 +977,81 @@ Recommended scope:
   profitability analysis;
 - do not treat title wording as content evidence or project performance
   evidence.
+
+## 19. Post-PR #203 Inventory Update
+
+Update status:
+
+`post_batch_03_rows_54_61_compact_summary_complete_audited`
+
+This section supersedes the earlier rows `54..61` target-selection,
+metadata-resolution, threshold-discovery, summary-recovery, and compact-summary
+audit handoffs for inventory and coverage tracking. The earlier sections remain
+as the historical target-selection and recovery record; rows `54`, `55`, `56`,
+`58`, `59`, `60`, and `61` are no longer pending threshold discovery, summary
+recovery, or compact-summary audit. Row `57` remains a completed-skip row.
+Row `66` remains a later completed-skip reference only.
+
+It is the committed-docs-only inventory deliverable for Issue #204.
+
+Completion evidence:
+
+- PR #201 added the committed compact-summary file:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_54_61_compact_summaries.md`.
+- PR #203 added the committed compact-summary audit:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_54_61_compact_summary_audit.md`.
+- The audit decision is
+  `post_batch_03_rows_54_61_compact_summaries_ready_for_inventory_completion`.
+
+Inventory status table:
+
+| source-order row | public video ID | inventory status | compact-summary evidence | audit evidence |
+| ---: | --- | --- | --- | --- |
+| 54 | `WPQVfZtSv2o` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 55 | `deHKQbyiaPY` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 56 | `yjCmReet8kk` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 57 | `16Kb39TFFek` | `completed_skip_prior_corpus_work` | Prior completed-summary evidence carried forward | PR #203 completed-skip audit |
+| 58 | `NfAfaV9FZXo` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 59 | `4P-yhIkMmUc` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 60 | `eWEseVfdfPU` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 61 | `dbSdTwPxQac` | `compact_summary_complete_audited` | PR #201 compact-summary file | PR #203 compact-summary audit |
+| 66 | `GIHwOx6iwiw` | `later_completed_skip_reference_preserved` | Later completed-skip reference carried forward | PR #203 reference-only audit |
+
+Allowed inventory use:
+
+- count rows `54`, `55`, `56`, `58`, `59`, `60`, and `61` as completed
+  compact summaries for corpus inventory and coverage tracking;
+- carry row `57` forward as a completed-skip row;
+- preserve row `66` as a later completed-skip reference only;
+- cite the compact-summary file and compact-summary audit in later
+  corpus-only coverage work;
+- start any later target-slice selection after row `61`, while preserving
+  row `66` only as a known later completed-skip reference if that future window
+  reaches it.
+
+Forbidden inventory use:
+
+- do not treat these rows as Strategy A/B/B2/C evidence;
+- do not use this update as a doctrine conclusion;
+- do not convert these summaries into executable trading rules;
+- do not infer trading readiness, win rate, profitability, broker/live
+  suitability, market-data conclusions, or optimization targets;
+- do not authorize additional source access or any retry precedent from this
+  inventory update;
+- do not treat the clean no-retry Issue #200 recovery run as precedent for
+  later source-access retries.
+
+Next recommended task:
+
+`[codex] Select next post-Batch-03 corpus target slice after rows 54-61 completion`
+
+Recommended scope:
+
+- use committed Markdown only;
+- preserve source-order accounting after row `61`;
+- keep target selection separate from source access and summary recovery;
+- preserve row `66` only as a later completed-skip reference when supported by
+  existing repository evidence;
+- do not run source access, rewrite summaries, update doctrine, change Strategy
+  behavior, access market data, use broker/live systems, optimize parameters,
+  or make profitability claims.

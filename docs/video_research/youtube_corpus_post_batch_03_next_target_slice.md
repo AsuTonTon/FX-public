@@ -1270,3 +1270,89 @@ Recommended scope:
   profitability analysis;
 - do not treat title wording as content evidence or project performance
   evidence.
+
+## 22. Post-PR #219 Inventory Update
+
+Update status:
+
+`post_batch_03_rows_62_68_partial_compact_summary_inventory_updated_with_row_62_blocked`
+
+This section supersedes the earlier rows `62..68` target-selection,
+metadata-resolution, threshold-discovery, summary-recovery, blocker-decision,
+and compact-summary audit handoffs for inventory and coverage tracking. The
+earlier sections remain as the historical target-selection and recovery record.
+Rows `63`, `64`, `65`, `67`, and `68` are no longer pending threshold
+discovery, summary recovery, or compact-summary audit. Row `62` remains
+blocked/quarantined and is not compact-summary complete. Row `66` remains a
+completed-skip row.
+
+It is the committed-docs-only inventory deliverable for Issue #220.
+
+Completion and blocker evidence:
+
+- PR #215 added the committed partial compact-summary file:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_62_68_partial_compact_summaries.md`.
+- PR #217 added the committed row-62 blocker decision:
+  `docs/video_research/youtube_corpus_post_batch_03_row_62_blocker_decision.md`.
+- PR #219 added the committed partial compact-summary audit:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_62_68_partial_compact_summary_audit.md`.
+- The audit decision is
+  `post_batch_03_rows_63_68_partial_compact_summaries_ready_for_inventory_with_row_62_blocked`.
+
+Inventory status table:
+
+| source-order row | public video ID | inventory status | summary or blocker evidence | audit evidence |
+| ---: | --- | --- | --- | --- |
+| 62 | `kljZef5IXLc` | `blocked_quarantined_not_compact_summary_complete` | PR #217 row-62 blocker decision | PR #219 row-62 blocked audit |
+| 63 | `PBxdWeI43Ic` | `compact_summary_complete_audited_for_inventory_only` | PR #215 partial compact-summary file | PR #219 partial compact-summary audit |
+| 64 | `XnznwDuVQ08` | `compact_summary_complete_audited_for_inventory_only` | PR #215 partial compact-summary file | PR #219 partial compact-summary audit |
+| 65 | `rvJ2QpQUY-E` | `compact_summary_complete_audited_for_inventory_only` | PR #215 partial compact-summary file | PR #219 partial compact-summary audit |
+| 66 | `GIHwOx6iwiw` | `completed_skip_prior_corpus_work` | Prior completed-summary evidence carried forward | PR #219 completed-skip audit |
+| 67 | `ABjvvCfYYXY` | `compact_summary_complete_audited_for_inventory_only` | PR #215 partial compact-summary file | PR #219 partial compact-summary audit |
+| 68 | `d5Xfn_wNw0g` | `compact_summary_complete_audited_for_inventory_only` | PR #215 partial compact-summary file | PR #219 partial compact-summary audit |
+
+Allowed inventory use:
+
+- count rows `63`, `64`, `65`, `67`, and `68` as completed compact summaries
+  for corpus inventory and coverage tracking only;
+- carry row `62` forward as
+  `blocked_row_62_unusable_context_after_authorized_refetch`;
+- keep row `62` out of compact-summary completion counts;
+- carry row `66` forward as a completed-skip row;
+- cite the partial compact-summary file, row-62 blocker decision, and partial
+  compact-summary audit in later corpus-only coverage work;
+- treat the post-Batch-03 Intermediate tail window as inventory-updated with an
+  explicit row-62 blocker, not as full rows `62..68` compact-summary
+  completion.
+
+Forbidden inventory use:
+
+- do not count row `62` as compact-summary complete;
+- do not treat row `66` as newly summarized or newly audited beyond completed
+  skip carry-forward;
+- do not treat these rows as Strategy A/B/B2/C evidence;
+- do not use this update as a doctrine conclusion;
+- do not convert these summaries into executable trading rules;
+- do not infer trading readiness, win rate, profitability, broker/live
+  suitability, market-data conclusions, leverage/account behavior, or
+  optimization targets;
+- do not authorize additional source access, another row-62 re-fetch, or any
+  source-access retry precedent from this inventory update.
+
+Next recommended task:
+
+`[codex] Review post-Batch-03 Intermediate tail closure with row-62 blocker`
+
+Recommended scope:
+
+- use committed Markdown only;
+- confirm whether the post-Batch-03 Intermediate tail can be treated as
+  inventory-updated with row `62` carried as a blocker;
+- preserve rows `63`, `64`, `65`, `67`, and `68` as compact-summary complete
+  for inventory purposes only;
+- preserve row `66` as completed-skip;
+- decide the next docs-only corpus handoff, if any, before selecting any new
+  target slice;
+- do not run source access, re-fetch row `62`, rewrite summaries, update
+  doctrine, change Strategy behavior, access market data, use broker/live
+  systems, optimize parameters, or make profitability claims.

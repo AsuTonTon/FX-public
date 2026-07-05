@@ -175,9 +175,14 @@ Source-touch accounting fields for any later authorized recovery task:
 | `source_url_or_request_url_committed` | Must remain `no`. |
 | `generated_data_artifact_committed` | Must remain `no`. |
 
-## 10. Recommended next issue
+## 10. Prior recommended next issue
 
-Recommended next issue title:
+The following recommendation was correct for Issue #241, before PR #244, PR
+#248, and PR #250 resolved the rows `21..22` branch into row `21` recovered
+and row `22` blocked. It is retained as lineage, but is superseded by the Issue
+#251 status refresh in section 12.
+
+Prior recommended next issue title:
 
 `[codex] Intermediate Batch 03 rows 21-22 compact summary recovery`
 
@@ -199,3 +204,46 @@ Readiness decision:
 `intermediate_batch_03_rows_21_27_recovery_plan_issue_241_status_refresh_ready`
 
 Reason: committed docs establish the exact rows `21..27` and all seven video IDs; the original bounded run recorded `caption_access_blocked_http_429` for all seven rows; later committed docs record rows `21..22` as `success_git_safe_summary_possible`; rows `23..27` retain blocked accounting absent a later authorized probe; row `62` remains blocked/quarantined and outside scope; and this refresh defines source-touch accounting, strict gatekeeping, stop conditions, and next-task routing without performing source access or touching raw artifacts, Strategy, Doctrine, market-data, broker/live, backtest, optimization, or profitability boundaries.
+
+## 12. Issue #251 status refresh after row-22 blocked decision
+
+This section is the current docs-only status update for Issue `#251`. It uses
+committed Markdown only and performs no YouTube, DownSub, caption, subtitle,
+transcript-body, caption URL, browser, media, ASR, market-data, broker/live, or
+generated-artifact access.
+
+PR #250 supersedes the earlier rows `21..22` recovery-next state in this plan.
+The current row-level recovery status is:
+
+| playlist order | video ID | latest committed status after PR #250 | current handling |
+| ---: | --- | --- | --- |
+| 21 | `bG3-_KfpskE` | compact paraphrased summary recovered in PR #244 | complete for this rows `21..27` recovery status slice; do not source-touch again for row-22 handling |
+| 22 | `-VNpaMQWGUE` | PR #248 consumed the one authorized row-22 recovery attempt, and PR #250 decided row `22` remains blocked after failed one-time recovery | keep blocked; no automatic retry, fallback route, re-fetch, summary reconstruction, or title-based summary |
+| 23 | `69XsLQQwo_M` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 24 | `8ityiaa4j8c` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 25 | `8tzBkeMR92g` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 26 | `piuUBEWYeug` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 27 | `ex-3Ywii0Qs` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+
+Status marker:
+
+`intermediate_batch_03_rows_21_27_status_updated_after_row_22_blocked_decision`
+
+Reason: row `21` is compact-summary recovered; row `22` is not
+compact-summary complete and remains blocked after the failed one-time recovery
+path; rows `23..27` still retain blocked accounting absent a later authorized
+probe; row `62` remains blocked/quarantined and outside this recovery scope.
+
+This status update does not authorize source access. It also does not treat PR
+#248 as a retry precedent.
+
+## 13. Current exact next recommended task
+
+`[codex] Decide Intermediate Batch 03 rows 23-27 residual blocker handling after rows 21-22 closure`
+
+That task should use committed Markdown only, decide whether rows `23..27`
+remain blocked or need a separate future PM authorization path, preserve row
+`21` as complete, preserve row `22` as blocked after the failed one-time
+recovery path, keep row `62` blocked/quarantined and out of scope, and avoid
+source access, doctrine updates, Strategy changes, market-data/broker/live
+work, optimization, and trading or profitability claims.

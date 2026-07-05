@@ -476,3 +476,113 @@ Recommended scope:
 - do not run source access, rewrite summaries, update doctrine, change Strategy
   behavior, access market data, use broker/live systems, optimize parameters,
   or make profitability claims.
+
+## 14. Post-Row-45 Target Selection
+
+Task:
+
+`post_batch_03_next_target_slice_after_rows_36_45_completion`
+
+This section records the next committed-docs-only target-selection result after
+rows `36`, `37`, `38`, `41`, `42`, `43`, and `45` were marked compact-summary
+complete and audited for inventory purposes, while rows `39`, `40`, and `44`
+remain completed-skip rows.
+
+Additional committed docs reviewed:
+
+- `docs/video_research/channel_playlist_metadata_reconciliation_report.md`;
+- `docs/video_research/playlist_led_summaries/intermediate_batch_03_caption_access_plan.md`;
+- `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_36_45_compact_summaries.md`;
+- `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_36_45_compact_summary_audit.md`;
+- this document's Post-PR #174 inventory update.
+
+Selection basis:
+
+- rows `36`, `37`, `38`, `41`, `42`, `43`, and `45` are no longer pending
+  target candidates because they are compact-summary complete and audited for
+  inventory tracking;
+- rows `39`, `40`, and `44` remain completed-skip rows in the rows `36..45`
+  window;
+- committed playlist metadata reconciliation identifies known already
+  summarized/audited intermediate rows after row `45` at rows `48`, `57`, and
+  `66`;
+- committed docs reviewed here do not provide public video IDs or compact
+  titles for unresolved rows `46`, `47`, `49`, `50`, `51`, `52`, or `53`;
+- therefore this document can select the next source-order row window, but it
+  cannot authorize threshold discovery or source access until a future bounded
+  metadata-resolution task records the missing row identity fields.
+
+Selected source-order window:
+
+`post_batch_03_next_source_order_window_rows_46_53_with_known_skip_row_48`
+
+Target-row accounting:
+
+| source-order row | public video ID | compact title | committed completion or skip status | eligibility label | reason |
+| ---: | --- | --- | --- | --- | --- |
+| 46 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | First unresolved source-order row after completed row `45`; row identity fields are not available in the committed docs reviewed here. |
+| 47 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Next unresolved source-order row; row identity fields must be resolved before any source access. |
+| 48 | `HuNeo8FfBO8` | `available only as prior completed-summary reference` | `already_summarized_audited_prior_corpus_work` | `excluded_already_completed` | `channel_playlist_metadata_reconciliation_report.md` lists row `48` as already summarized/audited. |
+| 49 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Next unresolved source-order row after the row-48 skip marker. |
+| 50 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Next unresolved source-order row; row identity fields must be resolved before any source access. |
+| 51 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Next unresolved source-order row; no content evidence is inferred. |
+| 52 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Next unresolved source-order row; metadata resolution is required first. |
+| 53 | `not_available_in_committed_docs_reviewed` | `not_available_in_committed_docs_reviewed` | `no_committed_summary_or_audit_hit_found` | `target_candidate_metadata_resolution_required` | Seventh unresolved candidate after row `45` when known completed row `48` is skipped. |
+
+Decision:
+
+`post_batch_03_rows_46_53_target_window_selected_metadata_resolution_required`
+
+Allowed interpretation:
+
+- rows `46`, `47`, `49`, `50`, `51`, `52`, and `53` are the next seven
+  unresolved source-order target candidates after row `45` when known completed
+  row `48` is skipped;
+- row `48` should be treated as a completed-skip reference by default;
+- rows `57` and `66` remain later known completed-skip references if a future
+  target window reaches them;
+- the selected window is a corpus inventory and target-selection result only.
+
+Forbidden interpretation:
+
+- do not treat this section as video content evidence;
+- do not infer caption availability, transcript availability, source-body
+  accessibility, doctrine content, mechanical-rule content, Strategy evidence,
+  trading readiness, win rate, or profitability;
+- do not run threshold discovery from this section alone, because public video
+  IDs and compact titles for the unresolved target rows are not yet committed;
+- do not re-summarize row `48`, `57`, or `66` without a future explicit
+  correction or re-audit issue;
+- do not treat prior retry disclosures as precedent for later source-access
+  retries.
+
+Stop rules for later work:
+
+- stop before source access if a matching open PR already covers rows
+  `46..53`, row `48`, or the same deliverable path;
+- stop before source access if a newer committed target-resolution document
+  supersedes this selected window;
+- stop before source access if target-row identity cannot be resolved through
+  an explicitly authorized Git-safe metadata route;
+- skip row `48` by default unless a future explicit correction issue changes
+  its completed-skip status;
+- keep any later threshold discovery separate from summary recovery, doctrine
+  updates, Strategy changes, market-data work, broker/live work, optimization,
+  and profitability analysis.
+
+Next recommended task:
+
+`[codex] Resolve post-Batch-03 rows 46-53 target metadata before source access`
+
+Recommended scope:
+
+- use a separately authorized bounded metadata-only route if committed docs
+  still do not provide row identity fields;
+- resolve only playlist-order row, public video ID, and compact title for rows
+  `46`, `47`, `49`, `50`, `51`, `52`, and `53`;
+- carry forward row `48` as a known completed-skip row;
+- do not access captions, subtitles, transcript bodies, caption URLs, comments,
+  live chat, community posts, full descriptions, downloaded media, ASR, market
+  data, broker/live systems, non-approved sources, or raw metadata dumps;
+- keep metadata resolution separate from threshold discovery and summary
+  recovery.

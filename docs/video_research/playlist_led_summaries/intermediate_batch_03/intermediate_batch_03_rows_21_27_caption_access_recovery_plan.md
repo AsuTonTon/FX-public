@@ -2,6 +2,8 @@
 
 Task: `channel_playlist_led_intermediate_batch_03_rows_21_27_caption_access_recovery_plan`
 
+Issue refresh: `#241 [codex] Plan Intermediate Batch 03 rows 21-27 caption-access recovery after blocker`
+
 ## 1. Objective and scope
 
 This docs-only recovery plan defines the conservative next handling for Intermediate Batch 03 rows `21..27` after the bounded target-resolution run documented all seven rows as caption-blocked.
@@ -31,8 +33,14 @@ This recovery plan relies only on these committed repository docs:
 - `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_continuation_target_table.md`
 - `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_continuation_aggregate_report.md`
 - `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_continuation_review.md`
+- `docs/video_research/playlist_led_summaries/intermediate_batch_03/intermediate_batch_03_rows_21_22_tiny_recovery_probe.md`
+- `docs/video_research/channel_playlist_led_post_beginner_intake_decision.md`
+- `docs/video_research/channel_playlist_led_intake_status_after_beginner_batch_01.md`
+- `docs/video_research/youtube_corpus_access_cooldown_status.md`
+- `docs/video_research/youtube_corpus_fallback_only_backlog_review.md`
+- `docs/video_research/youtube_corpus_post_batch_03_intermediate_tail_closure_review.md`
 
-These docs are sufficient to establish the exact unresolved row window, the seven target video IDs, and the known caption-access blocker.
+These docs are sufficient to establish the exact row window, the seven target video IDs, the original caption-access blocker, the later rows `21..22` tiny recovery status, the rows `23..27` residual blocker boundary, and the row `62` separation requirement.
 
 ## 3. Known blocker summary
 
@@ -122,27 +130,72 @@ If the first `2` IDs remain blocked, the future PR should not continue to the re
 
 No outcome should update Strategy A/B/B2/C, Doctrine Map, backtests, market-data handling, broker/live behavior, optimization settings, or profitability conclusions.
 
-## 9. Recommended next issue
+## 9. Issue #241 status refresh and recovery gate
+
+This section is the current docs-only status refresh for Issue `#241`. It uses committed Markdown only and performs no YouTube, DownSub, caption, subtitle, transcript-body, caption URL, browser, media, ASR, market-data, broker/live, or generated-artifact access.
+
+Issue #241 must not be read as a new authorization to retry all seven rows. The committed status is now split by source-order row:
+
+| playlist order | video ID | latest committed status for this recovery plan | current handling |
+| ---: | --- | --- | --- |
+| 21 | `bG3-_KfpskE` | later tiny probe recorded `success_git_safe_summary_possible` | eligible only for a separately authorized compact-summary recovery task |
+| 22 | `-VNpaMQWGUE` | later tiny probe recorded `success_git_safe_summary_possible` | eligible only for a separately authorized compact-summary recovery task |
+| 23 | `69XsLQQwo_M` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 24 | `8ityiaa4j8c` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 25 | `8tzBkeMR92g` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 26 | `piuUBEWYeug` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+| 27 | `ex-3Ywii0Qs` | no later committed recovery probe supersedes the prior `caption_access_blocked_http_429` status | keep blocked; no summary; no retry without explicit bounded authorization |
+
+Recovery-gate decision:
+
+`rows_21_22_summary_recovery_first_rows_23_27_need_explicit_bounded_probe_authorization`
+
+Reason: committed docs now show rows `21..22` as source-order recovery candidates after the later tiny probe, while rows `23..27` still retain the prior blocker status for planning purposes. A future rows `23..27` probe remains blocked unless a controlling issue explicitly authorizes that exact bounded probe and satisfies the cooldown, duplicate-check, source-route, stop-condition, and raw-artifact guardrails.
+
+Row `62` separation marker:
+
+`row_62_remains_blocked_quarantined_outside_rows_21_27_recovery_scope`
+
+Row `62` / `kljZef5IXLc` remains `blocked_row_62_unusable_context_after_authorized_refetch`. It is outside rows `21..27`, is not compact-summary complete, is not counted in this recovery plan, and must not be source-touched without a separate explicit PM authorization issue. Issue #241 creates no row-62 retry precedent.
+
+Source-touch accounting fields for any later authorized recovery task:
+
+| field | required value or rule |
+| --- | --- |
+| `active_issue_check` | Pass immediately before any source touch; stop if the controlling issue is closed, superseded, or ambiguous. |
+| `duplicate_check` | Check open PRs, deterministic branches, same-title PRs, same issue references, and recently merged PRs before source touch and again before PR creation. |
+| `authorized_route` | Use only the exact route named by the future controlling issue; do not substitute DownSub, ASR, browser, media download, comments, live chat, community posts, or broader channel access. |
+| `target_rows` | Use only the rows named by the future controlling issue; default source-order handling after this refresh is rows `21..22` before rows `23..27`. |
+| `target_video_ids` | Record only Git-safe public video IDs from committed docs. |
+| `caption_body_attempted` | Record `yes` or `no` per selected row without raw text, request URLs, caption URLs, or response bodies. |
+| `result_label` | Use compact Git-safe labels such as `success_git_safe_summary_possible`, `caption_access_blocked_http_429`, `caption_body_empty`, `caption_body_unavailable`, or `ambiguous_access`. |
+| `error_category` | Record only a compact category; do not store raw source output. |
+| `stop_decision` | Stop on 429, empty body, unavailable, ambiguous access, bypass-like requirements, raw-artifact needs, or Strategy/Doctrine/market-data/broker/live/profitability drift. |
+| `raw_artifact_committed` | Must remain `no`. |
+| `source_url_or_request_url_committed` | Must remain `no`. |
+| `generated_data_artifact_committed` | Must remain `no`. |
+
+## 10. Recommended next issue
 
 Recommended next issue title:
 
-`[codex] Channel playlist-led intermediate batch 03 rows 21-27 caption-access recovery probe`
+`[codex] Intermediate Batch 03 rows 21-22 compact summary recovery`
 
 Recommended scope:
 
-- wait-period confirmation;
-- exact target set limited to rows `21..27`;
-- initial source-order probe limited to rows `21..22`;
-- stop if HTTP 429, empty body, unavailable, ambiguous, or bypass-like access appears;
-- create paraphrased Markdown summaries only for rows with successfully available caption bodies;
-- otherwise document the continued blocker without summary creation.
+- use committed Markdown only before any source touch;
+- require explicit issue authorization for any caption-body source touch;
+- target rows `21..22` only, because those are the only rows with a later committed `success_git_safe_summary_possible` probe result;
+- create compact paraphrased Markdown summaries only if the authorized route succeeds again without raw-artifact or bypass-like conditions;
+- leave rows `23..27` blocked and untouched unless a later issue explicitly authorizes another bounded source-order probe;
+- keep row `62` blocked/quarantined and outside this recovery scope.
 
-The next issue should explicitly state that it authorizes the small probe. Without that explicit authorization, future automation should treat this recovery plan as documentation only.
+If the PM wants to retry rows `23..27` instead, that should be a separate issue with explicit bounded probe authorization, cooldown handling, duplicate checks, route naming, per-row source-touch accounting, and immediate stop conditions. Without that explicit authorization, future automation should treat rows `23..27` as blocked documentation only.
 
-## 10. Readiness decision
+## 11. Readiness decision
 
 Readiness decision:
 
-`intermediate_batch_03_rows_21_27_recovery_plan_ready_for_review`
+`intermediate_batch_03_rows_21_27_recovery_plan_issue_241_status_refresh_ready`
 
-Reason: committed docs already establish the exact rows `21..27`, all seven video IDs, and the current `caption_access_blocked_http_429` outcome; this plan defines a conservative wait-before-probe path, strict probe limits, stop conditions, reporting requirements, and outcome-specific deliverables without performing new source access or touching raw artifacts, Strategy, Doctrine, market-data, broker/live, backtest, optimization, or profitability boundaries.
+Reason: committed docs establish the exact rows `21..27` and all seven video IDs; the original bounded run recorded `caption_access_blocked_http_429` for all seven rows; later committed docs record rows `21..22` as `success_git_safe_summary_possible`; rows `23..27` retain blocked accounting absent a later authorized probe; row `62` remains blocked/quarantined and outside scope; and this refresh defines source-touch accounting, strict gatekeeping, stop conditions, and next-task routing without performing source access or touching raw artifacts, Strategy, Doctrine, market-data, broker/live, backtest, optimization, or profitability boundaries.

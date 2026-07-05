@@ -33,6 +33,8 @@ The titles below are compact source titles carried forward from committed playli
 
 This plan uses only existing committed docs, especially:
 
+- `docs/video_research/youtube_corpus_post_batch_03_next_corpus_handoff_decision.md`
+- `docs/video_research/youtube_corpus_post_batch_03_intermediate_tail_closure_review.md`
 - `docs/video_research/channel_playlist_metadata_reconciliation_report.md`
 - `docs/video_research/channel_playlist_metadata_reconciliation_report_review.md`
 - `docs/video_research/channel_playlist_metadata_reconciliation_plan.md`
@@ -62,7 +64,22 @@ Committed evidence from PR #89:
 
 No new metadata access, caption access, or inventory regeneration was performed for this planning PR.
 
-## 3. Target batch table
+## 3. Current Intermediate tail caveat
+
+The post-Batch-03 Intermediate tail is closed only as inventory-updated through
+row `68` with row `62` still blocked/quarantined. Row `62` is not
+compact-summary complete and must not be counted as completed corpus coverage.
+
+This planning handoff does not authorize any row-62 retry, re-fetch,
+source-touch, summary rewrite, or precedent for future retries. Row `62` must
+remain separate from the playlist-led beginner batch unless a later explicit PM
+authorization issue changes that state.
+
+The selected next target is therefore not another Intermediate tail action. It
+is the first playlist-led beginner batch identified by the committed playlist
+metadata reconciliation docs.
+
+## 4. Target batch table
 
 | playlist order | video ID | compact title | committed availability status | committed content type if known | existing summary/audit status | planned access handling | risk/notes |
 | ---: | --- | --- | --- | --- | --- | --- | --- |
@@ -74,7 +91,37 @@ No new metadata access, caption access, or inventory regeneration was performed 
 
 The five-video batch is intentionally modest and follows the creator's beginner playlist order.
 
-## 4. Caption access strategy
+## 5. Caption/access accounting fields
+
+A later authorized source-access task should account for each target video with
+the following Git-safe fields in committed Markdown only:
+
+- playlist order;
+- video ID;
+- committed availability status before source-touch;
+- route attempted;
+- access result;
+- retry count;
+- skip reason, when skipped;
+- source-touch accounting statement;
+- raw-artifact exclusion statement;
+- summary output decision.
+
+The route attempted field should name only the actually authorized route. This
+plan does not itself authorize DownSub, YouTube, transcript API, ASR, downloader,
+or any other source-touch route.
+
+Before any future source-touch, the future issue or PR must confirm:
+
+- the issue is still open and not superseded;
+- no open PR or deterministic branch already covers the same target;
+- the route is explicitly authorized by the project owner or PM;
+- the exact video ID set is unchanged or explicitly re-approved;
+- row `62` remains outside the beginner batch and is not retried by implication;
+- raw source text, source URLs, request URLs, CSV/JSON dumps, `data/`,
+  `results/`, and generated artifacts remain excluded from Git.
+
+## 6. Caption access strategy
 
 Preferred future execution route:
 
@@ -107,7 +154,7 @@ Each future video should be classified as one of:
 
 If access fails for a target, the execution PR should record the outcome and proceed only where the remaining accessible videos still support a coherent bounded batch.
 
-## 5. Summary output strategy after access
+## 7. Summary output strategy after access
 
 Future summaries should be paraphrased lightweight summaries only. They should not include raw transcript text, subtitle text, long quotes, caption URLs, raw TXT/SRT/VTT, generated datasets, or result artifacts.
 
@@ -133,7 +180,7 @@ The future execution PR should also add:
 - a clear readiness decision;
 - validation with `git diff --check`, `git diff --cached --check` if staging is used, and `git status --short`.
 
-## 6. Handling the two not-found videos
+## 8. Handling the two not-found videos
 
 The two beginner playlist entries not found in committed availability docs are:
 
@@ -151,7 +198,7 @@ If access fails:
 - continue with the remaining accessible videos only if doing so remains useful and honest;
 - keep unavailable or blocked videos out of completed-summary claims.
 
-## 7. Why not use existing title-priority route
+## 9. Why not use existing title-priority route
 
 The playlist-led beginner order is now preferred because it preserves the creator's intended learning sequence. It also reduces overfitting to scattered high-priority titles and makes it easier to distinguish foundational beginner doctrine from later tactical or advanced topics.
 
@@ -159,7 +206,11 @@ The earlier title-priority route remains useful as historical evidence for Batch
 
 Strategy A/B should not be updated from this plan. Strategy work should wait until playlist-led corpus evidence is summarized, audited, synthesized, and separately approved for strategy comparison.
 
-## 8. Recommended next PR
+## 10. Recommended next issue
+
+Exact next issue title:
+
+`[codex] Channel playlist-led beginner batch 01 DownSub access and summaries`
 
 Recommended next PR:
 
@@ -177,7 +228,7 @@ Reason:
 
 This recommendation does not authorize DownSub access by itself. The future execution PR requires explicit project-owner approval before any DownSub access occurs.
 
-## 9. Guardrails
+## 11. Guardrails
 
 Confirmed guardrails for this planning PR:
 
@@ -205,10 +256,10 @@ Confirmed guardrails for this planning PR:
 - No final Doctrine Map v2 creation or update.
 - Batch 08 was not marked completed.
 
-## 10. Readiness decision
+## 12. Readiness decision
 
 Readiness decision:
 
-`beginner_batch_01_caption_access_plan_ready_for_human_review`
+`beginner_batch_01_caption_access_plan_updated_with_row_62_caveat_ready_for_human_review`
 
-Reason: this docs-only plan defines the exact five-video playlist-led beginner batch, preserves the creator's playlist order, distinguishes known `auto_caption` entries from entries not found in committed availability docs, defines a bounded future DownSub route, requires honest access-status classification, and keeps all raw-artifact, strategy, Doctrine, market-data, broker/live, backtest, optimization, and profitability guardrails intact.
+Reason: this docs-only plan defines the exact five-video playlist-led beginner batch, preserves the creator's playlist order, distinguishes known `auto_caption` entries from entries not found in committed availability docs, carries forward the row-62 blocked/quarantined caveat without authorizing another retry, defines Git-safe caption/access accounting fields for any later authorized source-touch task, requires honest access-status classification, and keeps all raw-artifact, strategy, Doctrine, market-data, broker/live, backtest, optimization, and profitability guardrails intact.

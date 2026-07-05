@@ -41,15 +41,23 @@ The review does not access YouTube, access DownSub, fetch captions, summarize vi
 | Batch 08 was not marked complete | passed |
 | no backtest or optimization was run | passed |
 | no profitability claim was made | passed |
+| post-Batch-03 row `62` remains blocked/quarantined and not compact-summary complete | passed |
+| no row-62 retry, re-fetch, source-touch, or retry precedent was authorized | passed |
+| caption/access accounting fields are planning-only and Git-safe | passed |
 
 ## Plan review
 
 The plan is Git-safe and scoped:
 
-- it uses only committed docs from PR #89 and earlier reports;
+- it uses only committed docs from PR #89, the post-Batch-03 handoff decision,
+  the Intermediate tail closure review, and earlier reports;
+- it carries forward the row-62 blocker caveat without mixing row `62` into the
+  beginner playlist batch;
 - it defines exactly five beginner playlist video IDs;
 - it keeps the creator's playlist order;
 - it distinguishes the three entries with committed `auto_caption` evidence from the two entries not found in committed availability docs;
+- it defines Git-safe caption/access accounting fields for a later explicitly
+  authorized source-touch task;
 - it does not summarize videos;
 - it does not authorize DownSub access by itself;
 - it requires explicit project-owner approval before any future DownSub access;
@@ -70,4 +78,4 @@ Review decision:
 
 `beginner_batch_01_caption_access_plan_review_passed`
 
-Reason: the plan is docs-only, uses committed evidence only, defines a bounded future access batch, preserves raw-artifact and strategy guardrails, keeps Batch 08 blocked, and is ready for human review.
+Reason: the plan is docs-only, uses committed evidence only, defines a bounded future access batch, preserves the row-62 blocked/quarantined caveat, defines future source-touch accounting without authorizing source access, preserves raw-artifact and strategy guardrails, keeps Batch 08 blocked, and is ready for human review.

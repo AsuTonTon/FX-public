@@ -404,3 +404,75 @@ Recommended scope:
 - repeat all active source-access guardrails before any future source touch;
 - keep threshold discovery separate from compact-summary recovery and doctrine
   updates.
+
+## 13. Post-PR #174 Inventory Update
+
+Update status:
+
+`post_batch_03_rows_36_45_compact_summary_complete_audited`
+
+This section supersedes the earlier rows `36..45` target-selection,
+metadata-resolution, threshold-discovery, and summary-recovery handoffs for
+inventory and coverage tracking. The earlier sections remain as the historical
+target-selection and recovery record; rows `36`, `37`, `38`, `41`, `42`, `43`,
+and `45` are no longer pending threshold discovery, summary recovery, or
+compact-summary audit. Rows `39`, `40`, and `44` remain completed-skip rows.
+
+Completion evidence:
+
+- PR #172 added the committed compact-summary file:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_36_45_compact_summaries.md`.
+- PR #174 added the committed compact-summary audit:
+  `docs/video_research/playlist_led_summaries/intermediate_batch_03/post_batch_03/post_batch_03_rows_36_45_compact_summary_audit.md`.
+- The audit decision is
+  `post_batch_03_rows_36_45_compact_summaries_ready_for_inventory_completion`.
+
+Inventory status table:
+
+| source-order row | public video ID | inventory status | compact-summary evidence | audit evidence |
+| ---: | --- | --- | --- | --- |
+| 36 | `MOOHfd69A6w` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 37 | `10lr3YzO4jU` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 38 | `nBH-GgQnE60` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 39 | `6vGtLPFfWYQ` | `completed_skip_prior_corpus_work` | Prior completed-summary evidence carried forward | PR #174 completed-skip audit |
+| 40 | `DeRVQNJtq3s` | `completed_skip_prior_corpus_work` | Prior completed-summary evidence carried forward | PR #174 completed-skip audit |
+| 41 | `bc8InDoa7uA` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 42 | `xHANBTIp9PU` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 43 | `-j2Mc--yLNo` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+| 44 | `e4N22IkeOs4` | `completed_skip_prior_corpus_work` | Prior completed-summary evidence carried forward | PR #174 completed-skip audit |
+| 45 | `nKmetD4L2RI` | `compact_summary_complete_audited` | PR #172 compact-summary file | PR #174 compact-summary audit |
+
+Allowed inventory use:
+
+- count rows `36`, `37`, `38`, `41`, `42`, `43`, and `45` as completed compact
+  summaries for corpus inventory and coverage tracking;
+- carry rows `39`, `40`, and `44` forward as completed-skip rows;
+- cite the compact-summary file and compact-summary audit in later
+  corpus-only coverage work;
+- start any later target-slice selection after row `45`, unless a future issue
+  explicitly reviews an earlier-row correction.
+
+Forbidden inventory use:
+
+- do not treat these rows as Strategy A/B/B2/C evidence;
+- do not use this update as a doctrine conclusion;
+- do not convert these summaries into executable trading rules;
+- do not infer trading readiness, win rate, profitability, broker/live
+  suitability, market-data conclusions, or optimization targets;
+- do not authorize additional source access or any retry precedent from this
+  inventory update.
+
+Next recommended task:
+
+`[codex] Select next post-Batch-03 corpus target slice after rows 36-45 completion`
+
+Recommended scope:
+
+- use committed Markdown only;
+- preserve source-order accounting after row `45`;
+- keep target selection separate from source access and summary recovery;
+- carry forward any later committed completed-skip rows only when supported by
+  existing repository evidence;
+- do not run source access, rewrite summaries, update doctrine, change Strategy
+  behavior, access market data, use broker/live systems, optimize parameters,
+  or make profitability claims.

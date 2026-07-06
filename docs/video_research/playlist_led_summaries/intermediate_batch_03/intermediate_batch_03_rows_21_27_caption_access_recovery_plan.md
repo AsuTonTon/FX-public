@@ -247,3 +247,51 @@ remain blocked or need a separate future PM authorization path, preserve row
 recovery path, keep row `62` blocked/quarantined and out of scope, and avoid
 source access, doctrine updates, Strategy changes, market-data/broker/live
 work, optimization, and trading or profitability claims.
+
+## 14. Issue #259 status refresh after rows 23-27 blocked decision
+
+This section is the current docs-only status update for Issue `#259`. It uses
+committed Markdown only and performs no YouTube, DownSub, caption, subtitle,
+transcript-body, caption URL, browser, media, ASR, market-data, broker/live, or
+generated-artifact access.
+
+PR #258 supersedes the earlier rows `23..27` residual-blocker next state in
+section 13. The current row-level recovery status is:
+
+| playlist order | video ID | latest committed status after PR #258 | current handling |
+| ---: | --- | --- | --- |
+| 21 | `bG3-_KfpskE` | compact paraphrased summary recovered in PR #244 | complete for this rows `21..27` recovery status slice; do not source-touch again for rows `23..27` handling |
+| 22 | `-VNpaMQWGUE` | PR #248 consumed the one authorized row-22 recovery attempt, and PR #250 decided row `22` remains blocked after failed one-time recovery | keep blocked; no automatic retry, fallback route, re-fetch, summary reconstruction, or title-based summary |
+| 23 | `69XsLQQwo_M` | PR #256 retained `success_git_safe_summary_possible`, segment count `213`, and character count `3505`, but no usable compact-summary context; PR #258 decided the row remains blocked/deferred | keep blocked/deferred; no summary; no retry without separate explicit PM authorization |
+| 24 | `8ityiaa4j8c` | PR #256 retained `success_git_safe_summary_possible`, segment count `269`, and character count `4516`, but no usable compact-summary context; PR #258 decided the row remains blocked/deferred | keep blocked/deferred; no summary; no retry without separate explicit PM authorization |
+| 25 | `8tzBkeMR92g` | PR #256 source-touched the row once, but detailed row-level status was not retained; PR #258 decided the row remains blocked/deferred | keep blocked/deferred; no summary; no retry without separate explicit PM authorization |
+| 26 | `piuUBEWYeug` | PR #256 source-touched the row once, but detailed row-level status was not retained; PR #258 decided the row remains blocked/deferred | keep blocked/deferred; no summary; no retry without separate explicit PM authorization |
+| 27 | `ex-3Ywii0Qs` | PR #256 retained `success_git_safe_summary_possible`, segment count `181`, and character count `2982`, but no usable compact-summary context; PR #258 decided the row remains blocked/deferred | keep blocked/deferred; no summary; no retry without separate explicit PM authorization |
+
+Status marker:
+
+`intermediate_batch_03_rows_21_27_status_updated_after_rows_23_27_blocked_decision`
+
+Reason: row `21` is compact-summary recovered; row `22` remains blocked after
+the failed one-time recovery path; rows `23..27` remain blocked/deferred after
+the status-retention probe because no usable compact-summary context was
+retained for rows `23`, `24`, and `27`, and detailed status was not retained
+for rows `25` and `26`; row `62` remains blocked/quarantined and outside this
+recovery scope.
+
+This status update does not authorize source access, summary creation,
+fallback routes, manual reconstruction, doctrine updates, Strategy changes,
+market-data/broker/live work, optimization, or trading/performance/
+profitability claims. It also does not treat PR #256 as a retry precedent.
+
+## 15. Current exact next recommended task
+
+No automatic next task is recommended from this rows `21..27` recovery status
+update.
+
+If the PM wants any future rows `23..27` recovery path, it should be a separate
+explicit authorization issue that names the exact target rows, allowed source
+or manual-input route, retry budget, source-touch accounting requirements,
+stop conditions, and raw-artifact exclusions. Without that future issue,
+automation should keep rows `23..27` blocked/deferred and no-op rather than
+retrying, reconstructing summaries, or widening source access.
